@@ -3,9 +3,6 @@ import { View, StyleSheet, Platform } from 'react-native';
 import WebView from 'react-native-webview';
 import renderChart from './renderChart';
 import echarts from './echarts.min';
-import {Primeton, PageComponent} from "primeton-mobile";
-
-var RNFS = require('react-native-fs');
 
 export default class App extends Component {
 
