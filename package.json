@@ -8,10 +8,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "ehcarts",
+    "react-native-echarts",
+    "react",
+    "react-native-echarts-pro",
+    "echarts-pro"
   ],
-  "author": "",
-  "license": "",
+  "author": "supervons",
+  "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.58.0"
   }
