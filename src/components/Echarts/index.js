@@ -42,7 +42,7 @@ export default class App extends Component {
           }}
           scalesPageToFit={Platform.OS !== 'ios'}
           originWhitelist={['*']}
-          source={{uri:'http://qlj5lfckt.hn-bkt.clouddn.com/tpl.html'}}
+          source={{uri:'http://qlj5lfckt.hn-bkt.clouddn.com/model.html'}}
           onMessage={this.onMessage.bind(this)}
         />
       </View>
