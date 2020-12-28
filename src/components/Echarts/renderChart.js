@@ -10,7 +10,7 @@ export default function renderChart(props) {
     eChartsContainer.style.width = "${width}";
     eChartsContainer.style.background = "${props.backgroundColor}";
     echarts.registerMap('world', ${JSON.stringify(worldJson)});
-    const myChart = echarts.init(eChartsContainer);
+    const myChart = echarts.init(eChartsContainer, '${props.themeName}');
     let clickName = ""
     myChart.on('mousedown', (params)=>{
       clickName = params.name

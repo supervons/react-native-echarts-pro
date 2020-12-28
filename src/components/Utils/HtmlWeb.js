@@ -1,4 +1,5 @@
 import echarts from "../Echarts/echarts.min"; // echarts.min文件引入
+import { Theme } from "../Echarts/theme/index"; // 主题文件引入
 const HtmlWeb = `<!DOCTYPE html>
         <html>
         <head>
@@ -19,6 +20,7 @@ const HtmlWeb = `<!DOCTYPE html>
             }
           </style>
           <script>${echarts}</script>
+          <script>${Theme}</script>
         </head>
         
         <body>

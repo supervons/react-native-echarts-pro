@@ -201,6 +201,7 @@ export default class Demo extends Component {
 |     height      | number |     400     | Chart area height                                            |
 |     option      | object |    null     | Chart data configuration items, see details：https://echarts.apache.org/zh/option.html#title |
 | backgroundColor | string | transparent | Chart background color                                       |
+|    themeName    | string |      -      | There are only six officially available themes:<br />vintage \|\| dark \|\| macarons \|\| infographic \|\| shine \|\| roma |
 
 ## Method
 
@@ -209,3 +210,7 @@ export default class Demo extends Component {
 | setNewOption |    option    |            Reassign and render the chart            |
 |   onPress    | callbackData | Chart click event, callbackData is the clicked data |
 
+## TODO LIST
+
+1. Custom map data；
+2. Custom theme；
