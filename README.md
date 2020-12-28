@@ -21,7 +21,8 @@ Core：
 
 ## Usage
 ### 1.Base Usage
-![avatar](images/pieDemo.png)
+<img src="https://raw.githubusercontent.com/supervons/react-native-echarts-pro/master/images/pieDemo.png" alt="图片替换文本" height="500" align="bottom" />
+
 ```javascript
 import React, { Component } from 'react';
 import { View } from 'react-native';
@@ -107,7 +108,8 @@ export default class Demo extends Component {
 
 ```
 ### 2.Map Usage
-![avatar](images/mapDemo.png)
+<img src="https://raw.githubusercontent.com/supervons/react-native-echarts-pro/master/images/mapDemo.png" alt="图片替换文本" height="500" align="bottom" />
+
 ```javascript
 import React, { Component } from 'react';
 import { View } from 'react-native';
