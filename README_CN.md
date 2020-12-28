@@ -209,3 +209,8 @@ export default class Demo extends Component {
 | :----------: | :----------: | :------------------------------------: |
 | setNewOption |    option    |           重新赋值并渲染图表           |
 |   onPress    | callbackData | 图表点击事件，callbackData为点击的数据 |
+
+## 待办
+
+1. 自定义地图数据；
+2. 自定义主题；

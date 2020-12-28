@@ -210,3 +210,7 @@ export default class Demo extends Component {
 | setNewOption |    option    |            Reassign and render the chart            |
 |   onPress    | callbackData | Chart click event, callbackData is the clicked data |
 
+## TODO LIST
+
+1. Custom map data；
+2. Custom theme；
