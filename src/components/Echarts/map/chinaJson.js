@@ -1,3 +1,4 @@
+// prettier-ignore
 export default {
     type:"FeatureCollection",
     features:[
