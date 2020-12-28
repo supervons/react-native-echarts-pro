@@ -3,24 +3,24 @@
 [![NPM Version](https://img.shields.io/npm/v/react-native-echarts-pro.svg?style=flat)](https://www.npmjs.com/package/react-native-echarts-pro)
 [![NPM Version](https://img.shields.io/npm/dm/react-native-echarts-pro.svg?style=flat)](https://www.npmjs.com/package/react-native-echarts-pro)
 
-English  [简体中文](/README_CN.md "中文介绍")
-### Better charting tools based on native-echarts.
+[English](/README.md "english readme")  简体中文
+### 一个基于native-echarts持续优化完善的图表库.
 
-## Summary
+## 综述
 ```
-Core：
-1. Solve the problem of android tpl.html file reference;
-2. echarts version upgraded to 5.0;
-3. Support all kinds of original charts, new support map chart;
-4. Continuous optimization...
+核心：
+1. 解决android tpl.html文件引入问题;
+2. echarts 版本升级至 5.0;
+3. 支持原有各类图表，新增支持地图图表;
+4. 持续优化...
 ```
 
-## Getting started
+## 让我们开始吧
 
 `$ npm install react-native-echarts-pro --save`
 
-## Usage
-### 1.Base Usage
+## 示例
+### 1.基本示例
 ![avatar](images/pieDemo.png)
 ```javascript
 import React, { Component } from 'react';
@@ -106,7 +106,7 @@ export default class Demo extends Component {
 }
 
 ```
-### 2.Map Usage
+### 2.地图示例
 ![avatar](images/mapDemo.png)
 ```javascript
 import React, { Component } from 'react';
