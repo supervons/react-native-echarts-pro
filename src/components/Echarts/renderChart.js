@@ -7,6 +7,9 @@ export default function renderChart(props) {
   return `
     document.getElementById('main').style.height = "${height}";
     document.getElementById('main').style.width = "${width}";
+    document.getElementById('main').style.background = "${
+      props.backgroundColor
+    }";
     echarts.registerMap('world', ${JSON.stringify(worldJson)});
     var myChart = echarts.init(document.getElementById('main'));
     myChart.on('click', (params)=>{
@@ -32,15 +35,12 @@ export default function renderChart(props) {
     let u = navigator.userAgent;
     let isiOS = !!u.match(/\\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
     if(isiOS){
-      // iOS 监听
-      window.onload = function() {
        window.addEventListener("message", function(event) {
           if(!event.isTrusted){// 非图表类点击则执行刷新数据操作
             var option = JSON.parse(event.data);
             myChart.setOption(option);
           }
         });
-       }
     } else {
       // android监听
       window.document.addEventListener('message', function(event) {

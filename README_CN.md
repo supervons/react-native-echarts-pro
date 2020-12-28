@@ -193,3 +193,18 @@ export default class Demo extends Component {
 }
 
 ```
+
+## 属性
+
+|      属性       |  类型  |   默认值    | 描述                                                         |
+| :-------------: | :----: | :---------: | ------------------------------------------------------------ |
+|     height      | number |     400     | 图表区域高度                                                 |
+|     option      | object |    null     | 图表数据配置项，详情参看：https://echarts.apache.org/zh/option.html#title |
+| backgroundColor | string | transparent | 图表背景颜色                                                 |
+
+## 方法
+
+|    方法名    |     参数     |                  描述                  |
+| :----------: | :----------: | :------------------------------------: |
+| setNewOption |    option    |           重新赋值并渲染图表           |
+|   onPress    | callbackData | 图表点击事件，callbackData为点击的数据 |
