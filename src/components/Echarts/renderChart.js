@@ -5,16 +5,25 @@ export default function renderChart(props) {
   const height = `${props.height || 400}px`;
   const width = props.width ? `${props.width}px` : "auto";
   return `
-    document.getElementById('main').style.height = "${height}";
-    document.getElementById('main').style.width = "${width}";
-    document.getElementById('main').style.background = "${
-      props.backgroundColor
-    }";
+    const eChartsContainer = document.getElementById('main')
+    eChartsContainer.style.height = "${height}";
+    eChartsContainer.style.width = "${width}";
+    eChartsContainer.style.background = "${props.backgroundColor}";
     echarts.registerMap('world', ${JSON.stringify(worldJson)});
-    var myChart = echarts.init(document.getElementById('main'));
-    myChart.on('click', (params)=>{
-      //window.ReactNativeWebView.postMessage(params.name);
+    const myChart = echarts.init(eChartsContainer);
+    let clickName = ""
+    myChart.on('mousedown', (params)=>{
+      clickName = params.name
     });
+    myChart.getZr().on('click', (params)=>{
+      clickName = ""
+    });
+    // 借助dom click获取点击目标
+    eChartsContainer.onclick = ()=>{
+      if(clickName){
+        window.ReactNativeWebView.postMessage(clickName);
+      }
+    };
     var postEvent = params => {
       var seen = [];
       var paramsString = JSON.stringify(params, function(key, val) {
@@ -26,8 +35,6 @@ export default function renderChart(props) {
         }
         return val;
       });
-      window.ReactNativeWebView.postMessage(JSON.parse(paramsString).name);
-      window.postMessage(paramsString);
     }
     myChart.setOption(${toString(props.option)});
     
