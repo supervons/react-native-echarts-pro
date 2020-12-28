@@ -7,6 +7,9 @@ export default function renderChart(props) {
   return `
     document.getElementById('main').style.height = "${height}";
     document.getElementById('main').style.width = "${width}";
+    document.getElementById('main').style.background = "${
+      props.backgroundColor
+    }";
     echarts.registerMap('world', ${JSON.stringify(worldJson)});
     var myChart = echarts.init(document.getElementById('main'));
     myChart.on('click', (params)=>{
