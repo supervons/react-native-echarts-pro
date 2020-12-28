@@ -21,8 +21,7 @@
 
 ## 示例
 ### 1.基本示例
-<img src="https://raw.githubusercontent.com/supervons/react-native-echarts-pro/master/images/pieDemo.png" alt="iOS基本使用" height="500" align="bottom" />
-<img src="https://raw.githubusercontent.com/supervons/react-native-echarts-pro/master/images/pieDemo_android.png" alt="androd基本使用" height="500" align="bottom" />
+<img src="https://raw.githubusercontent.com/supervons/react-native-echarts-pro/master/images/pieDemo.png" alt="iOS基本使用" height="500" align="center" /><img src="https://raw.githubusercontent.com/supervons/react-native-echarts-pro/master/images/pieDemo_android.png" alt="androd基本使用" height="500" align="center" />
 
 ```javascript
 import React, { Component } from 'react';
@@ -109,8 +108,7 @@ export default class Demo extends Component {
 
 ```
 ### 2.地图示例
-<img src="https://raw.githubusercontent.com/supervons/react-native-echarts-pro/master/images/mapDemo.png" alt="iOS地图图片" height="500" align="bottom" />
-<img src="https://raw.githubusercontent.com/supervons/react-native-echarts-pro/master/images/mapDemo_android.png" alt="android地图图片" height="500" align="bottom" />
+<img src="https://raw.githubusercontent.com/supervons/react-native-echarts-pro/master/images/mapDemo.png" alt="iOS地图图片" height="500" align="bottom" /><img src="https://raw.githubusercontent.com/supervons/react-native-echarts-pro/master/images/mapDemo_android.png" alt="android地图图片" height="500" align="bottom" />
 
 ```javascript
 import React, { Component } from 'react';
