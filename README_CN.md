@@ -201,6 +201,7 @@ export default class Demo extends Component {
 |     height      | number |     400     | 图表区域高度                                                 |
 |     option      | object |    null     | 图表数据配置项，详情参看：https://echarts.apache.org/zh/option.html#title |
 | backgroundColor | string | transparent | 图表背景颜色                                                 |
+|    themeName    | string |      -      | 目前仅有官方提供的六个主题：<br />vintage \|\| dark \|\| macarons \|\| infographic \|\| shine \|\| roma |
 
 ## 方法
 
