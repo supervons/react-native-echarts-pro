@@ -193,3 +193,19 @@ export default class Demo extends Component {
 }
 
 ```
+
+## Props
+
+|      Prop       |  Type  |   Default   | Description                                                  |
+| :-------------: | :----: | :---------: | ------------------------------------------------------------ |
+|     height      | number |     400     | Chart area height                                            |
+|     option      | object |    null     | Chart data configuration items, see details：https://echarts.apache.org/zh/option.html#title |
+| backgroundColor | string | transparent | Chart background color                                       |
+
+## Method
+
+| Method name  |    Params    |                     Description                     |
+| :----------: | :----------: | :-------------------------------------------------: |
+| setNewOption |    option    |            Reassign and render the chart            |
+|   onPress    | callbackData | Chart click event, callbackData is the clicked data |
+
