@@ -1,12 +1,9 @@
-// import shine from './map/shine';
-// import chinaJson from './map/chinaJson';
-import worldJson from './map/worldJson';
-import echarts from './echarts.min';
-import toString from '../../util/toString';
+import worldJson from "./map/worldJson";
+import toString from "../../util/toString";
 
 export default function renderChart(props) {
   const height = `${props.height || 400}px`;
-  const width = props.width ? `${props.width}px` : 'auto';
+  const width = props.width ? `${props.width}px` : "auto";
   return `
     document.getElementById('main').style.height = "${height}";
     document.getElementById('main').style.width = "${width}";
@@ -52,5 +49,5 @@ export default function renderChart(props) {
       });
     }
     myChart.on('mapselectchanged', postEvent);
-  `
+  `;
 }
