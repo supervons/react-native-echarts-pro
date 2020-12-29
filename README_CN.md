@@ -19,6 +19,9 @@
 
 `$ npm install react-native-echarts-pro --save`
 
+## 依赖
+`$ npm install react-native-webview --save`
+
 ## 示例
 ### 1.基本示例
 <img src="https://raw.githubusercontent.com/supervons/ImageLibrary/master/react-native-echarts-pro/pieDemo.png" alt="iOS基本使用" height="500" align="center" /><img src="https://raw.githubusercontent.com/supervons/ImageLibrary/master/react-native-echarts-pro/pieDemo_android.png" alt="androd基本使用" height="500" align="center" />
