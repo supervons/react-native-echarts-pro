@@ -15,6 +15,9 @@ export default function renderChart(props) {
     myChart.on('mousedown', (params)=>{
       clickName = params.name
     });
+    myChart.on('dataZoom', (params)=>{
+        window.ReactNativeWebView.postMessage(params.type);
+    });
     myChart.getZr().on('click', (params)=>{
       clickName = ""
     });

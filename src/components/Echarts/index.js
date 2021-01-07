@@ -24,7 +24,14 @@ export default class App extends Component {
   }
 
   onMessage(event) {
-    this.props.onPress ? this.props.onPress(event.nativeEvent.data) : null;
+    // 判断监听类型
+    if (event.nativeEvent.data == "datazoom") {
+      this.props.onDataZoom
+        ? this.props.onDataZoom(event.nativeEvent.data)
+        : null;
+    } else {
+      this.props.onPress ? this.props.onPress(event.nativeEvent.data) : null;
+    }
   }
 
   render() {
