@@ -30,7 +30,9 @@ export default class App extends Component {
         ? this.props.onDataZoom(event.nativeEvent.data)
         : null;
     } else {
-      this.props.onPress ? this.props.onPress(event.nativeEvent.data) : null;
+      this.props.onPress
+        ? this.props.onPress(JSON.parse(event.nativeEvent.data))
+        : null;
     }
   }
 

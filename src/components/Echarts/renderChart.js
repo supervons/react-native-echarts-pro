@@ -11,20 +11,23 @@ export default function renderChart(props) {
     eChartsContainer.style.background = "${props.backgroundColor}";
     echarts.registerMap('world', ${JSON.stringify(worldJson)});
     const myChart = echarts.init(eChartsContainer, '${props.themeName}');
-    let clickName = ""
+    let clickName = {}
     myChart.on('mousedown', (params)=>{
-      clickName = params.name
+      clickName = {
+        name: params.name || '',
+        value: params.value || 0
+      }
     });
     myChart.on('dataZoom', (params)=>{
         window.ReactNativeWebView.postMessage(params.type);
     });
     myChart.getZr().on('click', (params)=>{
-      clickName = ""
+      clickName = {}
     });
     // 借助dom click获取点击目标
     eChartsContainer.onclick = ()=>{
-      if(clickName){
-        window.ReactNativeWebView.postMessage(clickName);
+      if(clickName.name || clickName.value){
+        window.ReactNativeWebView.postMessage(JSON.stringify(clickName));
       }
     };
     var postEvent = params => {
