@@ -208,10 +208,11 @@ export default class Demo extends Component {
 
 ## 方法
 
-|    方法名    |     参数     |                  描述                  |
-| :----------: | :----------: | :------------------------------------: |
-| setNewOption |    option    |           重新赋值并渲染图表           |
-|   onPress    | callbackData | 图表点击事件，callbackData为点击的数据 |
+|    方法名    |     参数     |                   描述                   |
+| :----------: | :----------: | :--------------------------------------: |
+| setNewOption |    option    |           重新赋值并渲染图表。           |
+|   onPress    | callbackData | 图表点击事件，callbackData为点击的数据。 |
+|  onDataZoom  | callbackData |              图表缩放事件。              |
 
 ## 待办
 

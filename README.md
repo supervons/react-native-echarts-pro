@@ -210,8 +210,9 @@ export default class Demo extends Component {
 
 | Method name  |    Params    |                     Description                     |
 | :----------: | :----------: | :-------------------------------------------------: |
-| setNewOption |    option    |            Reassign and render the chart            |
-|   onPress    | callbackData | Chart click event, callbackData is the clicked data |
+| setNewOption |    option    |           Reassign and render the chart.            |
+|   onPress    | callbackData | Chart click event,callbackData is the clicked data. |
+|  onDataZoom  | callbackData |                  Chart zoom event.                  |
 
 ## TODO LIST
 
