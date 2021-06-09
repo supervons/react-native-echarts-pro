@@ -17,19 +17,15 @@ export default function renderChart(props) {
         name: params.name || '',
         value: params.value || 0
       }
+      setTimeout(()=>{ 
+        if(clickName.name || clickName.value){
+          window.ReactNativeWebView.postMessage(JSON.stringify(clickName));
+        }
+      }, 100)
     });
     myChart.on('dataZoom', (params)=>{
         window.ReactNativeWebView.postMessage(params.type);
     });
-    myChart.getZr().on('click', (params)=>{
-      clickName = {}
-    });
-    // 借助dom click获取点击目标
-    eChartsContainer.onclick = ()=>{
-      if(clickName.name || clickName.value){
-        window.ReactNativeWebView.postMessage(JSON.stringify(clickName));
-      }
-    };
     var postEvent = params => {
       var seen = [];
       var paramsString = JSON.stringify(params, function(key, val) {
