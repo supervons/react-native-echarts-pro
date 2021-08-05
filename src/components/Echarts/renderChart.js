@@ -24,7 +24,10 @@ export default function renderChart(props) {
       }, 100)
     });
     myChart.on('dataZoom', (params)=>{
-        window.ReactNativeWebView.postMessage(params.type);
+        window.ReactNativeWebView.postMessage(JSON.stringify({type:params.type}));
+    });
+    myChart.on('legendselectchanged', (params)=>{
+        window.ReactNativeWebView.postMessage(JSON.stringify({type: params.type,name:params.name}));
     });
     var postEvent = params => {
       var seen = [];

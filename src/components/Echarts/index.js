@@ -8,7 +8,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: "我是默认值"
+      data: "我是默认值",
     };
     this.setNewOption = this.setNewOption.bind(this);
   }
@@ -24,10 +24,13 @@ export default class App extends Component {
   }
 
   onMessage(event) {
+    const echartsData = JSON.parse(event.nativeEvent.data);
     // 判断监听类型
-    if (event.nativeEvent.data == "datazoom") {
-      this.props.onDataZoom
-        ? this.props.onDataZoom(event.nativeEvent.data)
+    if (echartsData.type == "datazoom") {
+      this.props.onDataZoom ? this.props.onDataZoom() : null;
+    } else if (echartsData.type == "legendselectchanged") {
+      this.props.legendSelectChanged
+        ? this.props.legendSelectChanged(echartsData.name)
         : null;
     } else {
       this.props.onPress
@@ -46,7 +49,7 @@ export default class App extends Component {
           injectedJavaScript={renderChart(this.props)}
           style={{
             height: this.props.height || 400,
-            backgroundColor: this.props.backgroundColor || "transparent"
+            backgroundColor: this.props.backgroundColor || "transparent",
           }}
           scalesPageToFit={Platform.OS !== "ios"}
           originWhitelist={["*"]}
