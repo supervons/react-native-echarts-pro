@@ -1,17 +1,24 @@
-import React, { Component } from "react";
+/**
+ * RNEcharts entrance.
+ * Build a bridge between echarts and React-Native.
+ */
+import React, { useRef, useImperativeHandle, forwardRef } from "react";
 import { View } from "react-native";
 import { Container, Echarts } from "./src/components";
 
-export default class App extends Component {
-  setNewOption(option) {
-    this.chart.setNewOption(option);
-  }
-
-  render() {
-    return (
-      <Container width={this.props.width}>
-        <Echarts {...this.props} ref={e => (this.chart = e)} />
-      </Container>
-    );
-  }
+function APP(props, ref) {
+  const chartRef = useRef();
+  useImperativeHandle(ref, () => ({
+    setNewOption(option) {
+      chartRef.current.setNewOption(option);
+    },
+  }));
+  return (
+    <Container width={props.width}>
+      <Echarts {...props} ref={chartRef} />
+    </Container>
+  );
 }
+
+APP = forwardRef(APP);
+export default APP;

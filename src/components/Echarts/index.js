@@ -1,62 +1,70 @@
-import React, { Component } from "react";
+/**
+ * Use webview and injectedJavaScript to render the echarts container.
+ */
+import React, {
+  forwardRef,
+  useImperativeHandle,
+  useEffect,
+  useRef,
+  useMemo,
+  useState,
+} from "react";
 import { View, StyleSheet, Platform } from "react-native";
 import WebView from "react-native-webview";
 import renderChart from "./renderChart";
 import HtmlWeb from "../Utils/HtmlWeb";
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: "我是默认值",
-    };
-    this.setNewOption = this.setNewOption.bind(this);
-  }
+function Echarts(props, ref) {
+  const echartRef = useRef();
+  /**
+   * Export methods to parent.
+   * Parent can use ref to call the methods.
+   */
+  useImperativeHandle(ref, () => ({
+    setNewOption(option) {
+      echartRef.current.postMessage(JSON.stringify(option));
+    },
+  }));
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.option !== this.props.option) {
-      this.refs.chart.reload();
-    }
-  }
+  useEffect(() => {
+    echartRef.current.postMessage(JSON.stringify(props.option));
+  }, [props.option]);
 
-  setNewOption(option) {
-    this.refs.chart.postMessage(JSON.stringify(option));
-  }
-
-  onMessage(event) {
+  /**
+   * Capture the echarts event.
+   * @param event echarts event in webview.
+   */
+  function onMessage(event) {
     const echartsData = JSON.parse(event.nativeEvent.data);
     // 判断监听类型
     if (echartsData.type == "datazoom") {
-      this.props.onDataZoom ? this.props.onDataZoom() : null;
+      props.onDataZoom?.();
     } else if (echartsData.type == "legendselectchanged") {
-      this.props.legendSelectChanged
-        ? this.props.legendSelectChanged(echartsData.name)
-        : null;
+      props.legendSelectChanged?.(echartsData.name);
     } else {
-      this.props.onPress
-        ? this.props.onPress(JSON.parse(event.nativeEvent.data))
-        : null;
+      props.onPress?.(JSON.parse(event.nativeEvent.data));
     }
   }
 
-  render() {
-    return (
-      <View style={{ flex: 1, height: this.props.height || 400 }}>
-        <WebView
-          textZoom={100}
-          ref="chart"
-          scrollEnabled={true}
-          injectedJavaScript={renderChart(this.props)}
-          style={{
-            height: this.props.height || 400,
-            backgroundColor: this.props.backgroundColor || "transparent",
-          }}
-          scalesPageToFit={Platform.OS !== "ios"}
-          originWhitelist={["*"]}
-          source={{ html: HtmlWeb }}
-          onMessage={this.onMessage.bind(this)}
-        />
-      </View>
-    );
-  }
+  return (
+    <View style={{ flex: 1, height: props.height || 400 }}>
+      <WebView
+        textZoom={100}
+        ref={echartRef}
+        scrollEnabled={true}
+        injectedJavaScript={renderChart(props)}
+        style={{
+          height: props.height || 400,
+          backgroundColor: props.backgroundColor || "transparent",
+        }}
+        scalesPageToFit={Platform.OS !== "ios"}
+        originWhitelist={["*"]}
+        source={{ html: HtmlWeb }}
+        onMessage={onMessage}
+      />
+    </View>
+  );
 }
+
+Echarts = forwardRef(Echarts);
+export default Echarts;
