@@ -214,6 +214,13 @@ export default class Demo extends Component {
 |   onPress    | callbackData | Chart click event,callbackData is the clicked data. |
 |  onDataZoom  | callbackData |                  Chart zoom event.                  |
 
+### setNewOption
+```javascript
+<RNEChartsPro ref={(echarts) => (this.echarts = echarts)} option={this.state.options}/>
+
+// use
+this.echarts.setNewOption({...})
+```
 ## TODO LIST
 
 1. Custom map data；

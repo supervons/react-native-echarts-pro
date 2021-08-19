@@ -214,6 +214,13 @@ export default class Demo extends Component {
 |   onPress    | callbackData | 图表点击事件，callbackData为点击的数据。 |
 |  onDataZoom  | callbackData |              图表缩放事件。              |
 
+### setNewOption
+```javascript
+<RNEChartsPro ref={(echarts) => (this.echarts = echarts)} option={this.state.options}/>
+
+// use
+this.echarts.setNewOption({...})
+```
 ## 待办
 
 1. 自定义地图数据；
