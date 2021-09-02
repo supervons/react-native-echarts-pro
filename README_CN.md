@@ -210,6 +210,12 @@ export default function Demo() {
 // use
 this.echarts.setNewOption({...})
 ```
+### onPress
+```javascript
+// res is an object :{name:"", value:""}
+<RNEChartsPro onPress={res => alert(JSON.stringify(res))} option={this.state.options}/>
+```
+
 ## 待办
 
 1. 自定义地图数据；

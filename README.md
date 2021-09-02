@@ -210,6 +210,11 @@ export default function Demo() {
 // use
 this.echarts.setNewOption({...})
 ```
+### onPress
+```javascript
+// res is an object :{name:"", value:""}
+<RNEChartsPro onPress={res => alert(JSON.stringify(res))} option={this.state.options}/>
+```
 ## TODO LIST
 
 1. Custom map data；
