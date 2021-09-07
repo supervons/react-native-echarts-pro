@@ -1,3 +1,8 @@
+/**
+ * Injected javascript to the webview.
+ * Setting echarts width and height.
+ * Support dataZoom/legendselectchanged/click listener.
+ */
 import worldJson from "./map/worldJson";
 import toString from "../../util/toString";
 
