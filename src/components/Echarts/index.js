@@ -50,13 +50,14 @@ function Echarts(props, ref) {
     <View style={{ flex: 1, height: props.height || 400 }}>
       <WebView
         textZoom={100}
-        ref={echartRef}
         scrollEnabled={true}
-        injectedJavaScript={renderChart(props)}
         style={{
           height: props.height || 400,
           backgroundColor: props.backgroundColor || "transparent",
         }}
+        {...props.webViewSettings}
+        ref={echartRef}
+        injectedJavaScript={renderChart(props)}
         scalesPageToFit={Platform.OS !== "ios"}
         originWhitelist={["*"]}
         source={{ html: HtmlWeb }}

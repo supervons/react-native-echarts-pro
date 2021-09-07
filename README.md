@@ -194,6 +194,31 @@ export default function Demo() {
 |     option      | object |    null     | Chart data configuration items, see details：https://echarts.apache.org/zh/option.html#title |
 | backgroundColor | string | transparent | Chart background color                                       |
 |    themeName    | string |      -      | There are only six officially available themes:<br />vintage \|\| dark \|\| macarons \|\| infographic \|\| shine \|\| roma |
+| webViewSettings | object |    null     | Customize WebView container properties                       |
+
+### webViewSettings
+
+```javascript
+  return (
+    <View style={{ height: 300, paddingTop: 25 }}>
+      <RNEChartsPro
+        webViewSettings={{ // <==There
+          scrollEnabled: true,
+          onLoadEnd: () => {
+            alert(1);
+          },
+          style: {
+            backgroundColor: "red",
+          },
+        }}
+        onPress={res => alert(JSON.stringify(res))}
+        legendSelectChanged={res => alert(res)}
+        height={250}
+        option={pieOption}
+      />
+    </View>
+  );
+```
 
 ## Method
 

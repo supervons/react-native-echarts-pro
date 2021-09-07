@@ -194,6 +194,33 @@ export default function Demo() {
 |     option      | object |    null     | 图表数据配置项，详情参看：https://echarts.apache.org/zh/option.html#title |
 | backgroundColor | string | transparent | 图表背景颜色                                                 |
 |    themeName    | string |      -      | 目前仅有官方提供的六个主题：<br />vintage \|\| dark \|\| macarons \|\| infographic \|\| shine \|\| roma |
+| webViewSettings | object |    null     | 自定义WebView容器属性                                        |
+
+### webViewSettings
+
+```javascript
+  return (
+    <View style={{ height: 300, paddingTop: 25 }}>
+      <RNEChartsPro
+        webViewSettings={{ // <==There
+          scrollEnabled: true,
+          onLoadEnd: () => {
+            alert(1);
+          },
+          style: {
+            backgroundColor: "red",
+          },
+        }}
+        onPress={res => alert(JSON.stringify(res))}
+        legendSelectChanged={res => alert(res)}
+        height={250}
+        option={pieOption}
+      />
+    </View>
+  );
+```
+
+
 
 ## 方法
 
