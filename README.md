@@ -10,7 +10,7 @@ English  [简体中文](/README_CN.md "中文介绍")
 ```
 Core：
 1. Solve the problem of android tpl.html file reference;
-2. echarts version upgraded to 5.1.2;
+2. echarts version upgraded to 5.2.0;
 3. Support all kinds of original charts, new support map chart;
 4. Continuous optimization...
 ```
