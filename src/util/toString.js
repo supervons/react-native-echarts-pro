@@ -1,5 +1,5 @@
 export default function toString(obj) {
-  let result = JSON.stringify(obj, function(key, val) {
+  let result = JSON.stringify(obj, function (key, val) {
     if (typeof val === "function") {
       return `~--demo--~${val}~--demo--~`;
     }
