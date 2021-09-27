@@ -242,5 +242,6 @@ this.echarts.setNewOption({...})
 ```
 ## TODO LIST
 
-1. Custom map data；
-2. Custom theme；
+1. Support third-party extension；
+2. Custom map data；
+3. Custom theme；
