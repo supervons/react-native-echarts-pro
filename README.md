@@ -188,13 +188,14 @@ export default function Demo() {
 
 ## Props
 
-|      Prop       |  Type  |   Default   | Description                                                  |
-| :-------------: | :----: | :---------: | ------------------------------------------------------------ |
-|     height      | number |     400     | Chart area height                                            |
-|     option      | object |    null     | Chart data configuration items, see details：https://echarts.apache.org/zh/option.html#title |
-| backgroundColor | string | transparent | Chart background color                                       |
-|    themeName    | string |      -      | There are only six officially available themes:<br />vintage \|\| dark \|\| macarons \|\| infographic \|\| shine \|\| roma |
-| webViewSettings | object |    null     | Customize WebView container properties                       |
+|       Prop        |  Type  |   Default   | Require |                         Description                          |
+| :---------------: | :----: | :---------: | :-----: | :----------------------------------------------------------: |
+|      height       | number |     400     |    Y    |                      Chart area height                       |
+|      option       | object |    null     |    Y    | Chart data configuration items, see details：https://echarts.apache.org/zh/option.html#title |
+|  backgroundColor  | string | transparent |    N    |                    Chart background color                    |
+|     themeName     | string |      -      |    N    | There are only six officially available themes:<br />vintage \|\| dark \|\| macarons \|\| infographic \|\| shine \|\| roma |
+|  webViewSettings  | object |    null     |    N    |            Customize WebView container properties            |
+| formatterVariable | object |    null     |    N    |   If option’formatter function need variable,can use this.   |
 
 ### webViewSettings
 
@@ -219,6 +220,32 @@ export default function Demo() {
     </View>
   );
 ```
+
+### formatterVariable
+
+```javascript
+	const pieOption = {
+    yAxis: {
+        axisLabel: {
+            formatter(value) {
+                return value + formatterVariable.unit;
+            }
+        }
+    }
+    ...
+  }
+	return (
+    <View style={{ height: 300, paddingTop: 25 }}>
+      <RNEChartsPro
+				...
+        formatterVariable={{ unit: "dollar" }}
+        option={pieOption}
+      />
+    </View>
+  );
+```
+
+
 
 ## Method
 
