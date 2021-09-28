@@ -47,6 +47,10 @@ function Echarts(props, ref) {
     }
   }
 
+  /**
+   * Support third-party extension.
+   * extension: array
+   */
   useEffect(() => {
     let result = ``;
     props.extension &&

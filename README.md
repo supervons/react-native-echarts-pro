@@ -245,6 +245,45 @@ export default function Demo() {
   );
 ```
 
+### extension
+
+example（`echarts-liquidfill`）：
+
+```javascript
+const liquidOption = {
+    title: {
+      text: "水球图",
+      left: "center",
+    },
+    series: [
+      {
+        type: "liquidFill",
+        data: [0.6],
+        color: ["#afb11b"],
+        itemStyle: {
+          opacity: 0.6,
+        },
+        emphasis: {
+          itemStyle: {
+            opacity: 0.9,
+          },
+        },
+      },
+    ],
+  };
+	return (
+    <View style={{ height: 300, paddingTop: 25 }}>
+      <RNEChartsPro
+				...
+        extension={[ // Dynamically import third-party CDN or import min.js file
+          "https://cdn.jsdelivr.net/npm/echarts-liquidfill@3.0.0/dist/echarts-liquidfill.min.js",
+        ]}
+        option={liquidOption}
+      />
+    </View>
+  );
+```
+
 
 
 ## Method

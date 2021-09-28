@@ -196,6 +196,7 @@ export default function Demo() {
 |     themeName     | string |      -      |  N   | 目前仅有官方提供的六个主题：<br />vintage \|\| dark \|\| macarons \|\| infographic \|\| shine \|\| roma |
 |  webViewSettings  | object |    null     |  N   | 自定义 WebView 容器属性                                      |
 | formatterVariable | object |    null     |  N   | option 中 formatter 方法需要使用动态变量时，可以在此注入     |
+|     extension     | array  |    null     |  N   | 支持动态添加三方扩展                                         |
 
 ### webViewSettings
 
@@ -240,6 +241,45 @@ export default function Demo() {
 				...
         formatterVariable={{ unit: "美元" }}
         option={pieOption}
+      />
+    </View>
+  );
+```
+
+### extension
+
+示例（`echarts-liquidfill`）：
+
+```javascript
+const liquidOption = {
+    title: {
+      text: "水球图",
+      left: "center",
+    },
+    series: [
+      {
+        type: "liquidFill", // Echarts does not support this module
+        data: [0.6],
+        color: ["#afb11b"],
+        itemStyle: {
+          opacity: 0.6,
+        },
+        emphasis: {
+          itemStyle: {
+            opacity: 0.9,
+          },
+        },
+      },
+    ],
+  };
+	return (
+    <View style={{ height: 300, paddingTop: 25 }}>
+      <RNEChartsPro
+				...
+        extension={[ // 动态引入三方 CDN 或者导入 min.js 文件
+          "https://cdn.jsdelivr.net/npm/echarts-liquidfill@3.0.0/dist/echarts-liquidfill.min.js",
+        ]}
+        option={liquidOption}
       />
     </View>
   );
