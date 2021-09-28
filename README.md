@@ -284,7 +284,7 @@ const liquidOption = {
   );
 ```
 
-
+[Demo：ExploreRN](https://github.com/supervons/ExploreRN/blob/master/src/components/charts/chartsExtension.js)
 
 ## Method
 

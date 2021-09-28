@@ -248,7 +248,7 @@ export default function Demo() {
 
 ### extension
 
-示例（`echarts-liquidfill`）：
+示例（以`echarts-liquidfill`为例）：
 
 ```javascript
 const liquidOption = {
@@ -285,7 +285,7 @@ const liquidOption = {
   );
 ```
 
-
+[Demo：ExploreRN](https://github.com/supervons/ExploreRN/blob/master/src/components/charts/chartsExtension.js)
 
 ## 方法
 
