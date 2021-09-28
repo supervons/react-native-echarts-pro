@@ -7,13 +7,13 @@
 ### 一个基于native-echarts持续优化完善的图表库.
 
 ## 综述
-```
-核心：
+#### 核心：
+
 1. 解决android tpl.html文件引入问题;
 2. echarts 版本升级至 5.2.0;
-3. 支持原有各类图表，新增支持地图图表;
-4. 持续优化...
-```
+3. 支持原有各类图表；
+4. 新增支持地图图表;
+5. 支持三方动态扩展（水球图、词云等等）
 
 ## 让我们开始吧
 
@@ -307,9 +307,3 @@ this.echarts.setNewOption({...})
 // res is an object :{name:"", value:""}
 <RNEChartsPro onPress={res => alert(JSON.stringify(res))} option={this.state.options}/>
 ```
-
-## 待办
-
-1. 支持三方扩展；
-2. 自定义地图数据；
-3. 自定义主题；
