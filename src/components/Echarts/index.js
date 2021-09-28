@@ -16,6 +16,7 @@ import HtmlWeb from "../Utils/HtmlWeb";
 
 function Echarts(props, ref) {
   const echartRef = useRef();
+  const [extensionScript, setExtensionScript] = useState("");
   /**
    * Export methods to parent.
    * Parent can use ref to call the methods.
@@ -46,6 +47,19 @@ function Echarts(props, ref) {
     }
   }
 
+  useEffect(() => {
+    let result = ``;
+    props.extension &&
+      props.extension.map((res) => {
+        if (res.indexOf("http") === 0) {
+          result += `<script src="${res}"></script>`;
+        } else {
+          result += `<script>${res}</script>`;
+        }
+      });
+    setExtensionScript(result);
+  }, [props.extension]);
+
   return (
     <View style={{ flex: 1, height: props.height || 400 }}>
       <WebView
@@ -60,7 +74,7 @@ function Echarts(props, ref) {
         injectedJavaScript={renderChart(props)}
         scalesPageToFit={Platform.OS !== "ios"}
         originWhitelist={["*"]}
-        source={{ html: HtmlWeb }}
+        source={{ html: `${HtmlWeb} ${extensionScript}` }}
         onMessage={onMessage}
       />
     </View>
