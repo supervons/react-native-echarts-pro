@@ -35,6 +35,16 @@ export default function renderChart(props) {
     myChart.on('legendselectchanged', (params)=>{
         window.ReactNativeWebView.postMessage(JSON.stringify({type: params.type,name:params.name}));
     });
+    // tooltip内部事件
+    window.tooltipEvent = function (params){
+        /**
+         * tooltip的formatter可自定义HTML字符串或DOM实例，而当前版本5.2.x只能监听showTip和hideTip事件
+         * 本方法为tooltip内部添加事件，可统一调用tooltipEvent函数，如内部有多个事件，可在params里自定义属性加以区分
+         * 如<div ontouchstart='tooltipEvent(${JSON.stringify({name:'event1',value:1})})'></div>
+         * <div ontouchstart='tooltipEvent(${JSON.stringify({name:'event2',value:2})})'></div>
+        */
+        window.ReactNativeWebView.postMessage(JSON.stringify({type:'tooltipEvent',params}));
+    }
     var postEvent = params => {
       var seen = [];
       var paramsString = JSON.stringify(params, function(key, val) {

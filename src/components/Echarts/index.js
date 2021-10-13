@@ -42,6 +42,8 @@ function Echarts(props, ref) {
       props.onDataZoom?.();
     } else if (echartsData.type == "legendselectchanged") {
       props.legendSelectChanged?.(echartsData.name);
+    } else if (echartsData.type == "tooltipEvent") {
+      props.tooltipEvent?.(echartsData.params);
     } else {
       props.onPress?.(JSON.parse(event.nativeEvent.data));
     }
