@@ -16,7 +16,7 @@ export default function renderChart(props) {
     eChartsContainer.style.background = "${props.backgroundColor}";
     echarts.registerMap('world', ${JSON.stringify(worldJson)});
     const myChart = echarts.init(eChartsContainer, '${props.themeName}');
-    let formatterVariable = ${toString(props.formatterVariable || '')};
+    let formatterVariable = ${toString(props.formatterVariable || "")};
     let clickName = {}
     myChart.on('mousedown', (params)=>{
       clickName = {
@@ -40,8 +40,14 @@ export default function renderChart(props) {
         /**
          * tooltip的formatter可自定义HTML字符串或DOM实例，而当前版本5.2.x只能监听showTip和hideTip事件
          * 本方法为tooltip内部添加事件，可统一调用tooltipEvent函数，如内部有多个事件，可在params里自定义属性加以区分
-         * 如<div ontouchstart='tooltipEvent(${JSON.stringify({name:'event1',value:1})})'></div>
-         * <div ontouchstart='tooltipEvent(${JSON.stringify({name:'event2',value:2})})'></div>
+         * 如<div ontouchstart='tooltipEvent(${JSON.stringify({
+           name: "event1",
+           value: 1,
+         })})'></div>
+         * <div ontouchstart='tooltipEvent(${JSON.stringify({
+           name: "event2",
+           value: 2,
+         })})'></div>
         */
         window.ReactNativeWebView.postMessage(JSON.stringify({type:'tooltipEvent',params}));
     }
