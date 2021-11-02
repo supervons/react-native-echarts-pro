@@ -64,7 +64,16 @@ export default function renderChart(props) {
       });
     }
     myChart.setOption(${toString(props.option)});
-    
+    // 触发ECharts 中支持的图表行为
+    var dispatchAction = (action) => {
+      if(Array.isArray(action)){
+        action.forEach(i=>{
+          myChart.dispatchAction(i)
+        })
+      }else{
+        myChart.dispatchAction(action)
+      }
+    }
     //判断是否是iOS
     let u = navigator.userAgent;
     let isiOS = !!u.match(/\\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
@@ -74,12 +83,20 @@ export default function renderChart(props) {
             var option = JSON.parse(event.data);
             myChart.setOption(option);
           }
+          // 触发ECharts 中支持的图表行为
+          if(option.type == 'dispatchAction'){
+            dispatchAction(option.action)
+          }
         });
     } else {
       // android监听
       window.document.addEventListener('message', function(event) {
         var option = JSON.parse(event.data);
         myChart.setOption(option);
+        // 触发ECharts 中支持的图表行为
+        if(option.type == 'dispatchAction'){
+          dispatchAction(option.action)
+        }
       });
     }
     myChart.on('mapselectchanged', postEvent);

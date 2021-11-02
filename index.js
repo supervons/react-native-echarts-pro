@@ -12,6 +12,14 @@ function APP(props, ref) {
     setNewOption(option) {
       chartRef.current.setNewOption(option);
     },
+    /**
+     * 触发ECharts 中支持的图表行为
+     * Chart actions supported by ECharts are triggered through dispatchAction.
+     * @param {object|array} action
+     */
+    dispatchAction(action) {
+      chartRef.current.dispatchAction(action);
+    }
   }));
   return (
     <Container width={props.width}>

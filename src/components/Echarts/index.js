@@ -25,6 +25,14 @@ function Echarts(props, ref) {
     setNewOption(option) {
       echartRef.current.postMessage(JSON.stringify(option));
     },
+    /**
+     * 触发ECharts 中支持的图表行为
+     * Chart actions supported by ECharts are triggered through dispatchAction.
+     * @param {object|array} action
+     */
+    dispatchAction(action) {
+      echartRef.current.postMessage(JSON.stringify({type:'dispatchAction',action}));
+    }
   }));
 
   useEffect(() => {
