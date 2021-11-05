@@ -82,6 +82,7 @@ function Echarts(props, ref) {
         originWhitelist={["*"]}
         source={{ html: `${HtmlWeb} ${extensionScript}` }}
         onMessage={onMessage}
+        androidLayerType="software"
       />
     </View>
   );
