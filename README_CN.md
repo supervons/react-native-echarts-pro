@@ -199,7 +199,7 @@ export default function Demo() {
 |     extension     | array  |    null     |  N   | 支持动态添加三方扩展                                         |
 
 ### webViewSettings
-
+动态设置内部所使用的的`WebView`属性，如下`Echarts`加载结束后，将输出`alert`
 ```javascript
   return (
     <View style={{ height: 300, paddingTop: 25 }}>
@@ -223,7 +223,7 @@ export default function Demo() {
 ```
 
 ### formatterVariable
-
+若`option`中方法使用变量，则可以通过该属性传递
 ```javascript
 	const pieOption = {
     yAxis: {
@@ -247,7 +247,7 @@ export default function Demo() {
 ```
 
 ### extension
-
+动态支持三方扩展，如词云、水球图等
 示例（以`echarts-liquidfill`为例）：
 
 ```javascript

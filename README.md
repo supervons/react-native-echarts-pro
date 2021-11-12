@@ -198,7 +198,7 @@ export default function Demo() {
 | formatterVariable | object |    null     |    N    |   If option’formatter function need variable,can use this.   |
 
 ### webViewSettings
-
+The properties of the `WebView` used internally are dynamically set as follows, after the loading of `Echarts`, an `alert` will be output
 ```javascript
   return (
     <View style={{ height: 300, paddingTop: 25 }}>
@@ -222,7 +222,7 @@ export default function Demo() {
 ```
 
 ### formatterVariable
-
+If the method in `option` uses variables, it can be passed through this attribute
 ```javascript
 	const pieOption = {
     yAxis: {
@@ -246,7 +246,7 @@ export default function Demo() {
 ```
 
 ### extension
-
+Dynamic support for tripartite expansion, such as word cloud, water polo map, etc.
 example（`echarts-liquidfill`）：
 
 ```javascript

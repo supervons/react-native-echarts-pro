@@ -19,7 +19,7 @@ function APP(props, ref) {
      */
     dispatchAction(action) {
       chartRef.current.dispatchAction(action);
-    }
+    },
   }));
   return (
     <Container width={props.width}>
