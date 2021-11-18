@@ -307,3 +307,10 @@ this.echarts.setNewOption({...})
 // res is an object :{name:"", value:""}
 <RNEChartsPro onPress={res => alert(JSON.stringify(res))} option={this.state.options}/>
 ```
+
+# 待开发
+
+- [ ] 自定义地图数据
+- [ ] 自定义皮肤
+- [ ] 优化地址缩放与滑动事件
+- [ ] 支持 Typescript

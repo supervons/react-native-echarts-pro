@@ -307,7 +307,7 @@ this.echarts.setNewOption({...})
 <RNEChartsPro onPress={res => alert(JSON.stringify(res))} option={this.state.options}/>
 ```
 ## TODO LIST
-
-1. Support third-party extension；
-2. Custom map data；
-3. Custom theme；
+- [ ] Custom map data；
+- [ ] Custom theme；
+- [ ] Optimizes address zooming and sliding events
+- [ ] Supports Typescript
