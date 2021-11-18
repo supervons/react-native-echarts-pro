@@ -17,17 +17,12 @@ export default function renderChart(props) {
     echarts.registerMap('world', ${JSON.stringify(worldJson)});
     const myChart = echarts.init(eChartsContainer, '${props.themeName}');
     let formatterVariable = ${toString(props.formatterVariable || "")};
-    let clickName = {}
-    myChart.on('mousedown', (params)=>{
-      clickName = {
-        name: params.name || '',
-        value: params.value || 0
-      }
-      setTimeout(()=>{ 
-        if(clickName.name || clickName.value){
-          window.ReactNativeWebView.postMessage(JSON.stringify(clickName));
-        }
-      }, 100)
+    myChart.on('click', (params)=>{
+      const clickParams = {
+        name: params.name || "",
+        value: params.value || 0,
+      };
+      window.ReactNativeWebView.postMessage(JSON.stringify(clickParams));
     });
     myChart.on('dataZoom', (params)=>{
         window.ReactNativeWebView.postMessage(JSON.stringify({type:params.type}));

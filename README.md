@@ -306,8 +306,9 @@ this.echarts.setNewOption({...})
 // res is an object :{name:"", value:""}
 <RNEChartsPro onPress={res => alert(JSON.stringify(res))} option={this.state.options}/>
 ```
+
 ## TODO LIST
+- [x] Optimizes Map zooming and sliding events
 - [ ] Custom map data；
 - [ ] Custom theme；
-- [ ] Optimizes address zooming and sliding events
 - [ ] Supports Typescript

@@ -31,8 +31,10 @@ function Echarts(props, ref) {
      * @param {object|array} action
      */
     dispatchAction(action) {
-      echartRef.current.postMessage(JSON.stringify({type:'dispatchAction',action}));
-    }
+      echartRef.current.postMessage(
+        JSON.stringify({ type: "dispatchAction", action })
+      );
+    },
   }));
 
   useEffect(() => {
