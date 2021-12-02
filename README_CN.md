@@ -197,6 +197,7 @@ export default function Demo() {
 |  webViewSettings  | object |    null     |  N   | 自定义 WebView 容器属性                                      |
 | formatterVariable | object |    null     |  N   | option 中 formatter 方法需要使用动态变量时，可以在此注入     |
 |     extension     | array  |    null     |  N   | 支持动态添加三方扩展                                         |
+|   customMapData   | object |    null     |  N   | 供自定义地图使用，null 则为世界地图，格式见后续使用示例      |
 
 ### webViewSettings
 动态设置内部所使用的的`WebView`属性，如下`Echarts`加载结束后，将输出`alert`
@@ -287,6 +288,34 @@ const liquidOption = {
 
 [Demo：ExploreRN](https://github.com/supervons/ExploreRN/blob/master/src/components/charts/chartsExtension.js)
 
+### customMapData
+
+自定义地图数据，不传则为世界地图。
+
+```javascript
+import ChinaJsonData from "./ChinaJsonData.js";
+
+...
+	return (
+    <View style={{ height: 300, paddingTop: 25 }}>
+      <RNEChartsPro
+				...
+        customMapData={ChinaJsonData}
+      />
+    </View>
+  );
+```
+
+#### ChinaJsonData.js
+
+[Demo](https://github.com/supervons/react-native-echarts-pro/blob/master/src/components/Echarts/map/chinaJson.js)
+
+你可以去这个网站下载自定义地图数据:
+
+https://geojson.io/
+
+
+
 ## 方法
 
 |    方法名    |     参数     |                   描述                   |
@@ -311,6 +340,6 @@ this.echarts.setNewOption({...})
 # 待开发
 
 - [x] 优化地址缩放与滑动事件
-- [ ] 自定义地图数据
+- [x] 自定义地图数据
 - [ ] 自定义皮肤
 - [ ] 支持 Typescript

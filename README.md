@@ -196,6 +196,7 @@ export default function Demo() {
 |     themeName     | string |      -      |    N    | There are only six officially available themes:<br />vintage \|\| dark \|\| macarons \|\| infographic \|\| shine \|\| roma |
 |  webViewSettings  | object |    null     |    N    |            Customize WebView container properties            |
 | formatterVariable | object |    null     |    N    |   If option’formatter function need variable,can use this.   |
+|   customMapData   | object |    null     |    N    | For custom maps, null is a world map. See the following usage examples |
 
 ### webViewSettings
 The properties of the `WebView` used internally are dynamically set as follows, after the loading of `Echarts`, an `alert` will be output
@@ -286,6 +287,32 @@ const liquidOption = {
 
 [Demo：ExploreRN](https://github.com/supervons/ExploreRN/blob/master/src/components/charts/chartsExtension.js)
 
+### customMapData
+
+自定义地图数据，不传则为世界地图。
+
+```javascript
+import ChinaJsonData from "./ChinaJsonData.js";
+
+...
+	return (
+    <View style={{ height: 300, paddingTop: 25 }}>
+      <RNEChartsPro
+				...
+        customMapData={ChinaJsonData}
+      />
+    </View>
+  );
+```
+
+#### ChinaJsonData.js
+
+[Demo](https://github.com/supervons/react-native-echarts-pro/blob/master/src/components/Echarts/map/chinaJson.js)
+
+You can go to this page to download custom map json:
+
+https://geojson.io/
+
 ## Method
 
 | Method name  |    Params    |                     Description                     |
@@ -309,6 +336,6 @@ this.echarts.setNewOption({...})
 
 ## TODO LIST
 - [x] Optimizes Map zooming and sliding events
-- [ ] Custom map data；
+- [x] Custom map data；
 - [ ] Custom theme；
 - [ ] Supports Typescript

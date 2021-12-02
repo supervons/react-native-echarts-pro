@@ -14,7 +14,9 @@ export default function renderChart(props) {
     eChartsContainer.style.height = "${height}";
     eChartsContainer.style.width = "${width}";
     eChartsContainer.style.background = "${props.backgroundColor}";
-    echarts.registerMap('world', ${JSON.stringify(worldJson)});
+    echarts.registerMap('world', ${JSON.stringify(
+      props.customMapData || worldJson
+    )});
     const myChart = echarts.init(eChartsContainer, '${props.themeName}');
     let formatterVariable = ${toString(props.formatterVariable || "")};
     myChart.on('click', (params)=>{
@@ -77,10 +79,10 @@ export default function renderChart(props) {
           if(!event.isTrusted){// 非图表类点击则执行刷新数据操作
             var option = JSON.parse(event.data);
             myChart.setOption(option);
-          }
-          // 触发ECharts 中支持的图表行为
-          if(option.type == 'dispatchAction'){
-            dispatchAction(option.action)
+            // 触发ECharts 中支持的图表行为
+            if(option.type == 'dispatchAction'){
+                dispatchAction(option.action)
+            }
           }
         });
     } else {
