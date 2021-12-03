@@ -289,7 +289,7 @@ const liquidOption = {
 
 ### customMapData
 
-自定义地图数据，不传则为世界地图。
+Custom map data, default world map.
 
 ```javascript
 import ChinaJsonData from "./ChinaJsonData.js";
