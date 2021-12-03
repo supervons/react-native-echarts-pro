@@ -6,10 +6,9 @@ import React, {
   useImperativeHandle,
   useEffect,
   useRef,
-  useMemo,
   useState,
 } from "react";
-import { View, StyleSheet, Platform } from "react-native";
+import { View, Platform } from "react-native";
 import WebView from "react-native-webview";
 import renderChart from "./renderChart";
 import HtmlWeb from "../Utils/HtmlWeb";
