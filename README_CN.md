@@ -123,20 +123,20 @@ export default function Demo() {
       max: 3,
       calculable: true,
     },
-    series: [
+    geo: [
       {
         type: "map",
         map: "world",
         mapType: "world",
-        selectedMode: "single", //multiple多选
+        selectedMode: "single",
         itemStyle: {
           normal: {
             areaStyle: { color: "#B1D0EC" },
-            color: "#B1D0EC",
-            borderColor: "#dadfde", //区块的边框颜色
+            color: "#eeeeee",
+            borderColor: "#dadfde",
           },
           emphasis: {
-            //鼠标hover样式
+            //mouse hover style
             label: {
               show: true,
               textStyle: {
@@ -149,6 +149,18 @@ export default function Demo() {
         roam: true,
       },
     ],
+    series: {
+      type: "effectScatter",
+      coordinateSystem: "geo",
+      geoIndex: 0,
+      symbolSize: function (params) {
+        return (params[2] / 100) * 15 + 5;
+      },
+      itemStyle: {
+        color: "red",
+      },
+      data: [[116.4551, 40.2539, 10]],
+    },
     toolbox: {
       // 显示策略，可选为：true（显示） | false（隐藏）
       show: true,
@@ -184,6 +196,7 @@ export default function Demo() {
     </View>
   );
 }
+
 ```
 
 ## 属性

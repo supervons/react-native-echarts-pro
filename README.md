@@ -123,7 +123,7 @@ export default function Demo() {
       max: 3,
       calculable: true,
     },
-    series: [
+    geo: [
       {
         type: "map",
         map: "world",
@@ -132,7 +132,7 @@ export default function Demo() {
         itemStyle: {
           normal: {
             areaStyle: { color: "#B1D0EC" },
-            color: "#B1D0EC",
+            color: "#eeeeee",
             borderColor: "#dadfde",
           },
           emphasis: {
@@ -149,6 +149,18 @@ export default function Demo() {
         roam: true,
       },
     ],
+    series: {
+      type: "effectScatter",
+      coordinateSystem: "geo",
+      geoIndex: 0,
+      symbolSize: function (params) {
+        return (params[2] / 100) * 15 + 5;
+      },
+      itemStyle: {
+        color: "red",
+      },
+      data: [[116.4551, 40.2539, 10]],
+    },
     toolbox: {
       // According to strategy, optional: true (display) | false (hidden)
       show: true,
@@ -184,6 +196,7 @@ export default function Demo() {
     </View>
   );
 }
+
 ```
 
 ## Props
