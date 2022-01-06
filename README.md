@@ -24,7 +24,7 @@ English  [简体中文](/README_CN.md "中文介绍")
 
 ## Usage
 ### 1.Base Usage
-<img src="https://raw.githubusercontent.com/supervons/ImageLibrary/master/react-native-echarts-pro/pieDemo.png" alt="iOS基本使用" height="500" align="center" /><img src="https://raw.githubusercontent.com/supervons/ImageLibrary/master/react-native-echarts-pro/pieDemo_android.png" alt="androd基本使用" height="500" align="center" />
+<img src="https://cdn.jsdelivr.net/gh/supervons/ImageLibrary@v1.0.0/react-native-echarts-pro/pieDemo.png" alt="iOS基本使用" height="500" align="center" /><img src="https://cdn.jsdelivr.net/gh/supervons/ImageLibrary@v1.0.0/react-native-echarts-pro/pieDemo_android.png" alt="androd基本使用" height="500" align="center" />
 
 ```javascript
 import React from "react";
@@ -106,7 +106,7 @@ export default function Demo() {
 }
 ```
 ### 2.Map Usage
-<img src="https://raw.githubusercontent.com/supervons/ImageLibrary/master/react-native-echarts-pro/mapDemo.png" alt="iOS地图图片" height="500" align="bottom" /><img src="https://raw.githubusercontent.com/supervons/ImageLibrary/master/react-native-echarts-pro/mapDemo_android.png" alt="android地图图片" height="500" align="bottom" />
+<img src="https://cdn.jsdelivr.net/gh/supervons/ImageLibrary@v1.0.0/react-native-echarts-pro/mapDemo.png" alt="iOS地图图片" height="500" align="bottom" /><img src="https://cdn.jsdelivr.net/gh/supervons/ImageLibrary@v1.0.0/react-native-echarts-pro/mapDemo_android.png" alt="android地图图片" height="500" align="bottom" />
 
 ```javascript
 import React from "react";
