@@ -78,6 +78,7 @@ function Echarts(props, ref) {
   return (
     <View style={{ flex: 1, height: props.height || 400 }}>
       <WebView
+        androidHardwareAccelerationDisabled={true}
         textZoom={100}
         scrollEnabled={true}
         style={{
