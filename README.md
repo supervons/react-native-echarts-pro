@@ -5,6 +5,7 @@
 
 English  [简体中文](/README_CN.md "中文介绍")
 ### Better charting tools based on apeach-echarts.
+Thanks for native-echarts(@somonus).
 
 ## Summary
 #### Core：

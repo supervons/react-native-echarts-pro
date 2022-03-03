@@ -5,7 +5,7 @@
 
 [English](/README.md "english readme")  简体中文
 ### 一个基于apeach-echarts持续优化完善的图表库.
-
+Thanks for native-echarts(@somonus).
 ## 综述
 #### 核心：
 
