@@ -4,7 +4,7 @@
 [![NPM Version](https://img.shields.io/npm/dm/react-native-echarts-pro.svg?style=flat)](https://www.npmjs.com/package/react-native-echarts-pro)
 
 English  [简体中文](/README_CN.md "中文介绍")
-### Better charting tools based on native-echarts.
+### Better charting tools based on apeach-echarts.
 
 ## Summary
 #### Core：

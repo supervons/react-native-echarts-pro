@@ -4,7 +4,7 @@
 [![NPM Version](https://img.shields.io/npm/dm/react-native-echarts-pro.svg?style=flat)](https://www.npmjs.com/package/react-native-echarts-pro)
 
 [English](/README.md "english readme")  简体中文
-### 一个基于native-echarts持续优化完善的图表库.
+### 一个基于apeach-echarts持续优化完善的图表库.
 
 ## 综述
 #### 核心：
