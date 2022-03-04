@@ -11,9 +11,10 @@ Thanks for native-echarts(@somonus).
 
 1. 解决android tpl.html文件引入问题;
 2. echarts 版本升级至 5.3.0;
-3. 支持原有各类图表；
+3. 支持原有各类图表;
 4. 新增支持地图图表;
-5. 支持三方动态扩展（水球图、词云等等）
+5. 支持三方动态扩展（水球图、词云等等）;
+6. 支持Typescript;
 
 ## 让我们开始吧
 
@@ -354,5 +355,5 @@ this.echarts.setNewOption({...})
 
 - [x] 优化地址缩放与滑动事件
 - [x] 自定义地图数据
+- [x] 支持 Typescript
 - [ ] 自定义皮肤
-- [ ] 支持 Typescript

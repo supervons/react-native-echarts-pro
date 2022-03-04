@@ -14,7 +14,8 @@ Thanks for native-echarts(@somonus).
 2. echarts version upgraded to 5.3.0;
 3. Support all kinds of charts;
 4. Support map chart;
-5. Support Extensions；
+5. Support Extensions;
+6. Support Typescript;
 
 ## Getting started
 
@@ -349,7 +350,7 @@ this.echarts.setNewOption({...})
 ```
 
 ## TODO LIST
-- [x] Optimizes Map zooming and sliding events
-- [x] Custom map data；
-- [ ] Custom theme；
-- [ ] Supports Typescript
+- [x] Optimizes Map zooming and sliding events;
+- [x] Custom map data;
+- [x] Supports Typescript;
+- [ ] Custom theme;
