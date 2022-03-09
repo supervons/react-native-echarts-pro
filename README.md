@@ -206,7 +206,7 @@ export default function Demo() {
 |       Prop        |  Type  |   Default   | Require |                         Description                          |
 | :---------------: | :----: | :---------: | :-----: | :----------------------------------------------------------: |
 |      height       | number |     400     |    Y    |                      Chart area height                       |
-|      option       | object |    null     |    Y    | Chart data configuration items, see details：https://echarts.apache.org/zh/option.html#title |
+|      option       | object |    null     |    Y    | Chart data configuration items, see details：https://echarts.apache.org/en/option.html#title |
 |  backgroundColor  | string | transparent |    N    |                    Chart background color                    |
 |     themeName     | string |      -      |    N    | There are only six officially available themes:<br />vintage \|\| dark \|\| macarons \|\| infographic \|\| shine \|\| roma |
 |  webViewSettings  | object |    null     |    N    |            Customize WebView container properties            |
