@@ -78,7 +78,7 @@ export default function renderChart(props) {
        window.addEventListener("message", function(event) {
           if(!event.isTrusted){// 非图表类点击则执行刷新数据操作
             var option = JSON.parse(event.data);
-            myChart.setOption(option);
+            myChart.setOption(option, true, true);
             // 触发ECharts 中支持的图表行为
             if(option.type == 'dispatchAction'){
                 dispatchAction(option.action)
@@ -89,7 +89,7 @@ export default function renderChart(props) {
       // android监听
       window.document.addEventListener('message', function(event) {
         var option = JSON.parse(event.data);
-        myChart.setOption(option);
+        myChart.setOption(option, true, true);
         // 触发ECharts 中支持的图表行为
         if(option.type == 'dispatchAction'){
           dispatchAction(option.action)
