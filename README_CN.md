@@ -349,9 +349,9 @@ this.echarts.setNewOption({...})
                            
 // use, 包含设置项，更多信息查看: https://echarts.apache.org/en/api.html#echartsInstance.setOption
 this.echarts.setNewOption({...}, {
-  	notMerge?: boolean;
-    replaceMerge?: string | string[];
-    lazyUpdate?: boolean;
+    notMerge?: boolean,
+    replaceMerge?: string | string[],
+    lazyUpdate?: boolean,
 })
 ```
 ### onPress

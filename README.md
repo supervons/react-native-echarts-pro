@@ -347,9 +347,9 @@ this.echarts.setNewOption({...})
                            
 // use, optionSetting, see more info : https://echarts.apache.org/en/api.html#echartsInstance.setOption
 this.echarts.setNewOption({...}, {
-  	notMerge?: boolean;
-    replaceMerge?: string | string[];
-    lazyUpdate?: boolean;
+    notMerge?: boolean,
+    replaceMerge?: string | string[],
+    lazyUpdate?: boolean,
 })
 ```
 ### onPress
