@@ -330,18 +330,27 @@ https://geojson.io/
 
 ## Method
 
-| Method name  |    Params    |                     Description                     |
-| :----------: | :----------: | :-------------------------------------------------: |
-| setNewOption |    option    |           Reassign and render the chart.            |
-|   onPress    | callbackData | Chart click event,callbackData is the clicked data. |
-|  onDataZoom  | callbackData |                  Chart zoom event.                  |
+| Method name  |             Params             |                     Description                     |
+| :----------: | :----------------------------: | :-------------------------------------------------: |
+| setNewOption | option(require), optionSetting |           Reassign and render the chart.            |
+|   onPress    |          callbackData          | Chart click event,callbackData is the clicked data. |
+|  onDataZoom  |          callbackData          |                  Chart zoom event.                  |
 
 ### setNewOption
 ```javascript
 <RNEChartsPro ref={(echarts) => (this.echarts = echarts)} option={this.state.options}/>
 
-// use
+// use, no optionSetting
 this.echarts.setNewOption({...})
+
+// or
+                           
+// use, optionSetting, see more info : https://echarts.apache.org/en/api.html#echartsInstance.setOption
+this.echarts.setNewOption({...}, {
+  	notMerge?: boolean;
+    replaceMerge?: string | string[];
+    lazyUpdate?: boolean;
+})
 ```
 ### onPress
 ```javascript

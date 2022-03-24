@@ -332,11 +332,11 @@ https://geojson.io/
 
 ## 方法
 
-|    方法名    |     参数     |                   描述                   |
-| :----------: | :----------: | :--------------------------------------: |
-| setNewOption |    option    |           重新赋值并渲染图表。           |
-|   onPress    | callbackData | 图表点击事件，callbackData为点击的数据。 |
-|  onDataZoom  | callbackData |              图表缩放事件。              |
+|    方法名    |             参数              |                   描述                   |
+| :----------: | :---------------------------: | :--------------------------------------: |
+| setNewOption | option（必填）, optionSetting |           重新赋值并渲染图表。           |
+|   onPress    |         callbackData          | 图表点击事件，callbackData为点击的数据。 |
+|  onDataZoom  |         callbackData          |              图表缩放事件。              |
 
 ### setNewOption
 ```javascript
@@ -344,6 +344,15 @@ https://geojson.io/
 
 // use
 this.echarts.setNewOption({...})
+
+// or
+                           
+// use, 包含设置项，更多信息查看: https://echarts.apache.org/en/api.html#echartsInstance.setOption
+this.echarts.setNewOption({...}, {
+  	notMerge?: boolean;
+    replaceMerge?: string | string[];
+    lazyUpdate?: boolean;
+})
 ```
 ### onPress
 ```javascript

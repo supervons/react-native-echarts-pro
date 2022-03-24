@@ -22,6 +22,7 @@ function Echarts(props, ref) {
    */
   useImperativeHandle(ref, () => ({
     setNewOption(option, optionSetting) {
+      // See more info: https://echarts.apache.org/en/api.html#echartsInstance.setOption
       option.optionSetting = optionSetting;
       echartRef.current.postMessage(JSON.stringify(option));
     },
