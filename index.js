@@ -8,8 +8,8 @@ import { Container, Echarts } from "./src/components";
 function APP(props, ref) {
   const chartRef = useRef();
   useImperativeHandle(ref, () => ({
-    setNewOption(option) {
-      chartRef.current.setNewOption(option);
+    setNewOption(option, optionSetting) {
+      chartRef.current.setNewOption(option, optionSetting);
     },
     /**
      * 触发ECharts 中支持的图表行为

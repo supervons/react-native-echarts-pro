@@ -21,7 +21,8 @@ function Echarts(props, ref) {
    * Parent can use ref to call the methods.
    */
   useImperativeHandle(ref, () => ({
-    setNewOption(option) {
+    setNewOption(option, optionSetting) {
+      option.optionSetting = optionSetting;
       echartRef.current.postMessage(JSON.stringify(option));
     },
     /**
