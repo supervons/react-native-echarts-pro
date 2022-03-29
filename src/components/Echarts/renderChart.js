@@ -3,8 +3,10 @@
  * Setting echarts width and height.
  * Support dataZoom/legendselectchanged/click listener.
  */
+import { Platform } from "react-native";
 import worldJson from "./map/worldJson";
 import toString from "../../util/toString";
+const isiOS = Platform.OS === "ios";
 
 export default function renderChart(props) {
   const height = `${props.height || 400}px`;
@@ -72,9 +74,7 @@ export default function renderChart(props) {
       }
     }
     //判断是否是iOS
-    let u = navigator.userAgent;
-    let isiOS = !!u.match(/\\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-    if(isiOS){
+    if(${isiOS}){
        window.addEventListener("message", function(event) {
           if(!event.isTrusted){// 非图表类点击则执行刷新数据操作
             var option = JSON.parse(event.data);
