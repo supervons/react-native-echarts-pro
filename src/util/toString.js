@@ -1,7 +1,7 @@
 export default function toString(obj) {
   let result = JSON.stringify(obj, function (key, val) {
     if (typeof val === "function") {
-      return `~--demo--~${val}~--demo--~`;
+      return `~--demo--~${val.toString().replace(/\n/g, '').replace(/\\n/g, '\n')}~--demo--~`;
     }
     return val;
   });
@@ -10,7 +10,6 @@ export default function toString(obj) {
     result = result
       .replace('"~--demo--~', "")
       .replace('~--demo--~"', "")
-      .replace(/\\n/g, "")
       .replace(/\\\"/g, '"'); //最后一个replace将release模式中莫名生成的\"转换成"
   } while (result.indexOf("~--demo--~") >= 0);
   // 添加此行把unicode转为中文（否则formatter函数中含有中文在release版本中显示不出来）
