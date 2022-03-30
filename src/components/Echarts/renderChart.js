@@ -50,9 +50,9 @@ export default function renderChart(props) {
         */
         window.ReactNativeWebView.postMessage(JSON.stringify({type:'tooltipEvent',params}));
     }
-    var postEvent = params => {
-      var seen = [];
-      var paramsString = JSON.stringify(params, function(key, val) {
+    let postEvent = params => {
+      let seen = [];
+      let paramsString = JSON.stringify(params, function(key, val) {
         if (val != null && typeof val == "object") {
           if (seen.indexOf(val) >= 0) {
             return;
@@ -64,7 +64,7 @@ export default function renderChart(props) {
     }
     myChart.setOption(${toString(props.option)});
     // 触发ECharts 中支持的图表行为
-    var dispatchAction = (action) => {
+    let dispatchAction = (action) => {
       if(Array.isArray(action)){
         action.forEach(i=>{
           myChart.dispatchAction(i)
@@ -75,9 +75,9 @@ export default function renderChart(props) {
     }
     //判断是否是iOS
     if(${isiOS}){
-       window.addEventListener("message", function(event) {
+       window.addEventListener("message", (event) =>{
           if(!event.isTrusted){// 非图表类点击则执行刷新数据操作
-            var option = JSON.parse(event.data);
+            let option = JSON.parse(event.data);
             myChart.setOption(option, option.optionSetting);
             // 触发ECharts 中支持的图表行为
             if(option.type == 'dispatchAction'){
@@ -87,8 +87,8 @@ export default function renderChart(props) {
         });
     } else {
       // android监听
-      window.document.addEventListener('message', function(event) {
-        var option = JSON.parse(event.data);
+      window.document.addEventListener('message', (event) =>{
+        let option = JSON.parse(event.data);
         myChart.setOption(option, option.optionSetting);
         // 触发ECharts 中支持的图表行为
         if(option.type == 'dispatchAction'){
