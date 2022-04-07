@@ -3,14 +3,15 @@
  * Setting echarts width and height.
  * Support dataZoom/legendselectchanged/click listener.
  */
-import { Platform } from "react-native";
+import { Platform, Dimensions } from "react-native";
 import worldJson from "./map/worldJson";
 import toString from "../../util/toString";
 const isiOS = Platform.OS === "ios";
+const displayScale = Dimensions.get('window').scale / Dimensions.get('screen').scale;
 
 export default function renderChart(props) {
-  const height = `${props.height || 400}px`;
-  const width = props.width ? `${props.width}px` : "auto";
+  const height = `${(props.height || 400) * displayScale}px`;
+  const width = props.width ? `${props.width * displayScale}px` : "auto";
   return `
     const eChartsContainer = document.getElementById('main')
     eChartsContainer.style.height = "${height}";
