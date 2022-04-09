@@ -7,7 +7,8 @@ import { Platform, Dimensions } from "react-native";
 import worldJson from "./map/worldJson";
 import toString from "../../util/toString";
 const isiOS = Platform.OS === "ios";
-const displayScale = Dimensions.get('window').scale / Dimensions.get('screen').scale;
+const displayScale =
+  Dimensions.get("window").scale / Dimensions.get("screen").scale;
 
 export default function renderChart(props) {
   const height = `${(props.height || 400) * displayScale}px`;
