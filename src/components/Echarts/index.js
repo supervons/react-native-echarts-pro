@@ -51,8 +51,7 @@ function Echarts(props, ref) {
       );
       return await new Promise((resolve) => {
         const id = setInterval(() => {
-          console.log(123);
-          if (latestCount.current) {
+          if (latestCount.current && latestResult.current[functionName]) {
             clearInterval(id);
             resolve(latestResult.current[functionName]);
           }
@@ -81,6 +80,10 @@ function Echarts(props, ref) {
     } else if (echartsData.type === "getInstance") {
       const result = JSON.parse(event.nativeEvent.data);
       const tempInstanceResult = { ...instanceResult };
+      // If value is unreadable, set to notDefined.
+      if (!result.value) {
+        result.value = "notDefined";
+      }
       tempInstanceResult[result.functionName] = result.value;
       setInstanceResult((instanceResult) => tempInstanceResult);
       latestResult.current = tempInstanceResult;
