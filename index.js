@@ -2,7 +2,7 @@
  * RNEcharts entrance.
  * Build a bridge between echarts and React-Native.
  */
-import React, { useRef, useImperativeHandle, forwardRef } from "react";
+import React, { forwardRef, useImperativeHandle, useRef } from "react";
 import { Container, Echarts } from "./src/components";
 
 function APP(props, ref) {
@@ -18,6 +18,14 @@ function APP(props, ref) {
      */
     dispatchAction(action) {
       chartRef.current.dispatchAction(action);
+    },
+    /**
+     * Get echarts instance support function.
+     * @param {string} functionName
+     * @param {object} params
+     */
+    async getInstance(functionName, params) {
+      return await chartRef.current.getInstance(functionName, params);
     },
   }));
   return (

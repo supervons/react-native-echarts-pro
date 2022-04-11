@@ -3,12 +3,12 @@
  */
 import React, {
   forwardRef,
-  useImperativeHandle,
   useEffect,
+  useImperativeHandle,
   useRef,
   useState,
 } from "react";
-import { View, Platform } from "react-native";
+import { Platform, View } from "react-native";
 import WebView from "react-native-webview";
 import renderChart from "./renderChart";
 import HtmlWeb from "../Utils/HtmlWeb";
@@ -16,6 +16,10 @@ import HtmlWeb from "../Utils/HtmlWeb";
 function Echarts(props, ref) {
   const echartRef = useRef();
   const [extensionScript, setExtensionScript] = useState("");
+  const [instanceFlag] = useState(false);
+  const [instanceResult, setInstanceResult] = useState({});
+  const latestCount = useRef(instanceFlag);
+  const latestResult = useRef(instanceResult);
   /**
    * Export methods to parent.
    * Parent can use ref to call the methods.
@@ -36,6 +40,25 @@ function Echarts(props, ref) {
         JSON.stringify({ type: "dispatchAction", action })
       );
     },
+    /**
+     * Get echarts instance support function.
+     * @param {string} functionName
+     * @param {object} params
+     */
+    async getInstance(functionName, params) {
+      echartRef.current.postMessage(
+        JSON.stringify({ type: "getInstance", functionName, params })
+      );
+      return await new Promise((resolve) => {
+        const id = setInterval(() => {
+          console.log(123);
+          if (latestCount.current) {
+            clearInterval(id);
+            resolve(latestResult.current[functionName]);
+          }
+        }, 50);
+      });
+    },
   }));
 
   useEffect(() => {
@@ -49,12 +72,19 @@ function Echarts(props, ref) {
   function onMessage(event) {
     const echartsData = JSON.parse(event.nativeEvent.data);
     // 判断监听类型
-    if (echartsData.type == "datazoom") {
+    if (echartsData.type === "datazoom") {
       props.onDataZoom?.();
-    } else if (echartsData.type == "legendselectchanged") {
+    } else if (echartsData.type === "legendselectchanged") {
       props.legendSelectChanged?.(echartsData.name);
-    } else if (echartsData.type == "tooltipEvent") {
+    } else if (echartsData.type === "tooltipEvent") {
       props.tooltipEvent?.(echartsData.params);
+    } else if (echartsData.type === "getInstance") {
+      const result = JSON.parse(event.nativeEvent.data);
+      const tempInstanceResult = { ...instanceResult };
+      tempInstanceResult[result.functionName] = result.value;
+      setInstanceResult((instanceResult) => tempInstanceResult);
+      latestResult.current = tempInstanceResult;
+      latestCount.current = true;
     } else {
       props.onPress?.(JSON.parse(event.nativeEvent.data));
     }

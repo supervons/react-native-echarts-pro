@@ -26,7 +26,7 @@ export default function renderChart(props) {
     myChart.on('click', (params)=>{
       const clickParams = {
         name: params.name || "",
-        value: params.value || 0,
+        value: params.value || 0
       };
       window.ReactNativeWebView.postMessage(JSON.stringify(clickParams));
     });
@@ -77,24 +77,47 @@ export default function renderChart(props) {
     }
     //判断是否是iOS
     if(${isiOS}){
-       window.addEventListener("message", (event) =>{
-          if(!event.isTrusted){// 非图表类点击则执行刷新数据操作
-            let option = JSON.parse(event.data);
-            myChart.setOption(option, option.optionSetting);
-            // 触发ECharts 中支持的图表行为
-            if(option.type == 'dispatchAction'){
-                dispatchAction(option.action)
-            }
+      window.addEventListener("message", (event) => {
+        if (!event.isTrusted) {
+          // 非图表类点击则执行刷新数据操作
+          let option = JSON.parse(event.data);
+          myChart.setOption(option, option.optionSetting);
+          // 触发ECharts 中支持的图表行为
+          if (option.type === "dispatchAction") {
+            dispatchAction(option.action);
           }
-        });
+          // 获取实例进行操作
+          if (option.type === "getInstance") {
+            const result = myChart[option.functionName](option.params);
+            window.ReactNativeWebView.postMessage(
+              JSON.stringify({
+                type: "getInstance",
+                functionName: option.functionName,
+                value: result,
+              })
+            );
+          }
+        }
+      });
     } else {
-      // android监听
+      // Android Listener
       window.document.addEventListener('message', (event) =>{
         let option = JSON.parse(event.data);
         myChart.setOption(option, option.optionSetting);
         // 触发ECharts 中支持的图表行为
-        if(option.type == 'dispatchAction'){
+        if(option.type === 'dispatchAction'){
           dispatchAction(option.action)
+        }
+        // 获取实例进行操作
+        if(option.type === 'getInstance'){
+          const result = myChart[option.functionName](option.params)
+          window.ReactNativeWebView.postMessage(
+            JSON.stringify({
+              type:'getInstance',
+              functionName:option.functionName,
+              value:result
+            })
+          );
         }
       });
     }
