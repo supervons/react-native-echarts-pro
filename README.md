@@ -10,18 +10,12 @@ English  [简体中文](/README_CN.md "中文介绍")
 
 `$ npm install react-native-echarts-pro --save`
 
-It is super easy to use react-native-echarts-pro. Have a look at our [get started documentation](https://supervons.github.io/react-native-echarts-pro-docs/docs/intro) and onboard your app within minutes. Our detailed documentation is available as well.
+It is super easy to `use echarts in react-native`. Have a look at our [Get Started Documentation](https://supervons.github.io/react-native-echarts-pro-docs/docs/intro) and onboard your app within minutes. Our detailed documentation is available as well.
 
 ## Documentation
 [react-native-echarts-pro-docs](https://supervons.github.io/react-native-echarts-pro-docs/)
 
-
 # Contributors
-
-<a href="https://github.com/supervons"> <img style={{width:100, borderRadius:50}} src="https://avatars.githubusercontent.com/u/31637849"/> </a>
-<a href="https://github.com/ljh257110"> <img style={{width:100, borderRadius:50}} src="https://avatars.githubusercontent.com/u/30766973"/> </a>
-<a href="https://github.com/congshengwu"> <img style={{width:100, borderRadius:50}} src="https://avatars.githubusercontent.com/u/26167428"/> </a>
-<a href="https://github.com/RengeRenge"> <img style={{width:100, borderRadius:50}} src="https://avatars.githubusercontent.com/u/14158970"/> </a>
 
 [@supervons](https://github.com/supervons)
 

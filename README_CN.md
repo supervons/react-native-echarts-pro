@@ -10,17 +10,12 @@
 
 `$ npm install react-native-echarts-pro --save`
 
-在你的RN项目中接入 `react-native-echarts-pro` 非常简单. 查看 [开始文档](https://supervons.github.io/react-native-echarts-pro-docs/docs/intro)。
+在你的RN项目中接入 `echarts` 非常简单，查看 [开始文档](https://supervons.github.io/react-native-echarts-pro-docs/zh-cn/docs/intro)。
 
 ## 详细文档
-[react-native-echarts-pro-docs](https://supervons.github.io/react-native-echarts-pro-docs/)
+[react-native-echarts-pro-docs](https://supervons.github.io/react-native-echarts-pro-docs/zh-cn/)
 
 ## 贡献者
-
-<a href="https://github.com/supervons"> <img style={{width:100, borderRadius:50}} src="https://avatars.githubusercontent.com/u/31637849"/> </a>
-<a href="https://github.com/ljh257110"> <img style={{width:100, borderRadius:50}} src="https://avatars.githubusercontent.com/u/30766973"/> </a>
-<a href="https://github.com/congshengwu"> <img style={{width:100, borderRadius:50}} src="https://avatars.githubusercontent.com/u/26167428"/> </a>
-<a href="https://github.com/RengeRenge"> <img style={{width:100, borderRadius:50}} src="https://avatars.githubusercontent.com/u/14158970"/> </a>
 
 [@supervons](https://github.com/supervons)
 
