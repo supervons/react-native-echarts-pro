@@ -2,9 +2,10 @@
 # react-native-echarts-pro
 [![NPM Version](https://img.shields.io/npm/v/react-native-echarts-pro.svg?style=flat)](https://www.npmjs.com/package/react-native-echarts-pro)
 [![NPM Version](https://img.shields.io/npm/dm/react-native-echarts-pro.svg?style=flat)](https://www.npmjs.com/package/react-native-echarts-pro)
+[![license](https://img.shields.io/badge/license-MIT%20License-00AAAA.svg)](https://github.com/supervons/react-native-echarts-pro/blob/master/LICENSE)
 
 English  [简体中文](/README_CN.md "中文介绍")
-### Better charting tools based on apeach-echarts.
+### A React-Native charts based on Apeach-Echarts.
 
 ## Getting started
 
