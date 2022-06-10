@@ -117,6 +117,7 @@ function Echarts(props, ref) {
         textZoom={100}
         scrollEnabled={true}
         style={{
+          ...props.webViewStyle,
           height: props.height || 400,
           backgroundColor: props.backgroundColor || "transparent",
         }}
