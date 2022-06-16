@@ -23,12 +23,43 @@ export default function renderChart(props) {
     )});
     const myChart = echarts.init(eChartsContainer, '${props.themeName}');
     let formatterVariable = ${toString(props.formatterVariable || "")};
-    myChart.on('click', (params)=>{
-      const clickParams = {
-        name: params.name || "",
-        value: params.value || 0
+    myChart.getZr().on('click', (params)=>{
+      let pointInPixel = [params.offsetX, params.offsetY];
+      const clickParams={};
+      if (myChart.containPixel('grid', pointInPixel)) {
+        let pointInGrid = myChart.convertFromPixel({
+            seriesIndex: 0
+        }, pointInPixel);
+        let xIndex = pointInGrid[0]; //索引
+        let handleIndex = Number(xIndex);
+        // let seriesObj = myChart.getOption(); //图表object对象
+        let op = myChart.getOption();
+        //获得图表中点击的列
+        let month = op.xAxis[0].data[handleIndex];  //获取点击的列名
+        const clickParams = {
+          value: month || ''
+        };
+        window.ReactNativeWebView.postMessage(JSON.stringify(clickParams));
       };
-      window.ReactNativeWebView.postMessage(JSON.stringify(clickParams));
+    });
+    myChart.getZr().on('mousemove', (params)=>{
+      let pointInPixel = [params.offsetX, params.offsetY];
+      const clickParams={};
+      if (myChart.containPixel('grid', pointInPixel)) {
+        let pointInGrid = myChart.convertFromPixel({
+            seriesIndex: 0
+        }, pointInPixel);
+        let xIndex = pointInGrid[0]; //索引
+        let handleIndex = Number(xIndex);
+        let seriesObj = myChart.getOption(); //图表object对象
+        let op = myChart.getOption();
+        //获得图表中点击的列
+        let month = op.xAxis[0].data[handleIndex];  //获取点击的列名
+        const clickParams = {
+          value: month || ''
+        };
+        window.ReactNativeWebView.postMessage(JSON.stringify(clickParams));
+      };
     });
     myChart.on('dataZoom', (params)=>{
         window.ReactNativeWebView.postMessage(JSON.stringify({type:params.type}));
