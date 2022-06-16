@@ -25,3 +25,7 @@ It is super easy to `use echarts in react-native`. Have a look at our [Get Start
 [@congshengwu](https://github.com/congshengwu)
 
 [@RengeRenge](https://github.com/RengeRenge)
+# 注意
+为适配nkc-app项目的画图交互，修改了react-native-echarts-pro\src\components\Echarts\renderChart.js文件
+使用myChart.getZr().on('click',()=>{})、myChart.getZr().on('mousemove',()=>{}),监听点击和移动，
+获得点击像素点对应的柱状数，通过postmessage发送到RN，从而判断是否为主峰，添加Echarts的markLine画出核素峰指示线
