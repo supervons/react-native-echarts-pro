@@ -4,7 +4,7 @@
  * Support dataZoom/legendselectchanged/click listener.
  */
 import { Platform, Dimensions } from "react-native";
-import worldJson from "./map/worldJson";
+import getMapJSON from "./map/worldJson";
 import toString from "../../util/toString";
 const isiOS = Platform.OS === "ios";
 const displayScale =
@@ -19,7 +19,7 @@ export default function renderChart(props) {
     eChartsContainer.style.width = "${width}";
     eChartsContainer.style.background = "${props.backgroundColor}";
     echarts.registerMap('world', ${JSON.stringify(
-      props.customMapData || worldJson
+      props.customMapData || getMapJSON(props?.option?.geo?.length)
     )});
     const myChart = echarts.init(eChartsContainer, '${props.themeName}');
     let formatterVariable = ${toString(props.formatterVariable || "")};
