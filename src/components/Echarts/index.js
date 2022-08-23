@@ -17,6 +17,7 @@ function Echarts(props, ref) {
   const echartRef = useRef();
   const [extensionScript, setExtensionScript] = useState("");
   const [instanceFlag] = useState(false);
+  const [showContainer, setShowContainer] = useState(true);
   const [instanceResult, setInstanceResult] = useState({});
   const latestCount = useRef(instanceFlag);
   const latestResult = useRef(instanceResult);
@@ -63,6 +64,15 @@ function Echarts(props, ref) {
   useEffect(() => {
     echartRef.current.postMessage(JSON.stringify(props.option));
   }, [props.option]);
+
+  /**
+   * Remove WebView after destruction.
+   */
+  useEffect(() => {
+    return () => {
+      setShowContainer(false);
+    };
+  }, []);
 
   /**
    * Capture the echarts event.
@@ -112,23 +122,25 @@ function Echarts(props, ref) {
 
   return (
     <View style={{ flex: 1, height: props.height || 400 }}>
-      <WebView
-        androidHardwareAccelerationDisabled={true}
-        textZoom={100}
-        scrollEnabled={true}
-        style={{
-          ...props.webViewStyle,
-          height: props.height || 400,
-          backgroundColor: props.backgroundColor || "transparent",
-        }}
-        {...props.webViewSettings}
-        ref={echartRef}
-        injectedJavaScript={renderChart(props)}
-        scalesPageToFit={Platform.OS !== "ios"}
-        originWhitelist={["*"]}
-        source={{ html: `${HtmlWeb} ${extensionScript}` }}
-        onMessage={onMessage}
-      />
+      {showContainer && (
+        <WebView
+          onLoadEnd={(syntheticEvent) => {}}
+          androidHardwareAccelerationDisabled={true}
+          textZoom={100}
+          scrollEnabled={true}
+          style={{
+            height: props.height || 400,
+            backgroundColor: props.backgroundColor || "transparent",
+          }}
+          {...props.webViewSettings}
+          ref={echartRef}
+          injectedJavaScript={renderChart(props)}
+          scalesPageToFit={Platform.OS !== "ios"}
+          originWhitelist={["*"]}
+          source={{ html: `${HtmlWeb} ${extensionScript}` }}
+          onMessage={onMessage}
+        />
+      )}
     </View>
   );
 }
