@@ -98,8 +98,12 @@ function Echarts(props, ref) {
       setInstanceResult((instanceResult) => tempInstanceResult);
       latestResult.current = tempInstanceResult;
       latestCount.current = true;
-    } else {
+    } else if (echartsData.type === "click") {
       props.onPress?.(JSON.parse(event.nativeEvent.data));
+    } else {
+      if (props.eventActions && props.eventActions[echartsData.type]) {
+        props.eventActions[echartsData.type](echartsData);
+      }
     }
   }
 

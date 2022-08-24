@@ -23,10 +23,20 @@ export default function renderChart(props) {
     )});
     const myChart = echarts.init(eChartsContainer, '${props.themeName}');
     let formatterVariable = ${toString(props.formatterVariable || "")};
+    for(let temp of ${JSON.stringify(props.eventArrays)}){
+      myChart.on(temp, (params)=>{
+        const clickParams = {
+          ...params,
+          type: temp
+        };
+        window.ReactNativeWebView.postMessage(JSON.stringify(clickParams));
+      });
+    }
     myChart.on('click', (params)=>{
       const clickParams = {
         name: params.name || "",
-        value: params.value || 0
+        value: params.value || 0,
+        type: "click"
       };
       window.ReactNativeWebView.postMessage(JSON.stringify(clickParams));
     });
