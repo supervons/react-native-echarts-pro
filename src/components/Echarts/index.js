@@ -19,6 +19,7 @@ function Echarts(props, ref) {
   const [instanceFlag] = useState(false);
   const [showContainer, setShowContainer] = useState(true);
   const [instanceResult, setInstanceResult] = useState({});
+  const [eventArrays, setEventArrays] = useState({});
   const latestCount = useRef(instanceFlag);
   const latestResult = useRef(instanceResult);
   /**
@@ -124,6 +125,15 @@ function Echarts(props, ref) {
     setExtensionScript(result);
   }, [props.extension]);
 
+  /**
+   * Support custom actions.
+   * eventActions: object
+   */
+  useEffect(() => {
+    const eventArrays = Object.keys(props.eventActions);
+    setEventArrays(eventArrays);
+  }, [props.eventActions]);
+
   return (
     <View style={{ flex: 1, height: props.height || 400 }}>
       {showContainer && (
@@ -138,7 +148,7 @@ function Echarts(props, ref) {
           }}
           {...props.webViewSettings}
           ref={echartRef}
-          injectedJavaScript={renderChart(props)}
+          injectedJavaScript={renderChart({ ...props, eventArrays })}
           scalesPageToFit={Platform.OS !== "ios"}
           originWhitelist={["*"]}
           source={{ html: `${HtmlWeb} ${extensionScript}` }}
