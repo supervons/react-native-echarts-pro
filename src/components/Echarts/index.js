@@ -14,7 +14,7 @@ import renderChart from "./renderChart";
 import HtmlWeb from "../Utils/HtmlWeb";
 
 function Echarts(props, ref) {
-  const echartRef = useRef();
+  const eChartRef = useRef();
   const [extensionScript, setExtensionScript] = useState("");
   const [instanceFlag] = useState(false);
   const [showContainer, setShowContainer] = useState(true);
@@ -30,7 +30,7 @@ function Echarts(props, ref) {
     setNewOption(option, optionSetting) {
       // See more info: https://echarts.apache.org/en/api.html#echartsInstance.setOption
       option.optionSetting = optionSetting;
-      echartRef.current.postMessage(JSON.stringify(option));
+      eChartRef.current?.postMessage(JSON.stringify(option));
     },
     /**
      * 触发ECharts 中支持的图表行为
@@ -38,7 +38,7 @@ function Echarts(props, ref) {
      * @param {object|array} action
      */
     dispatchAction(action) {
-      echartRef.current.postMessage(
+      eChartRef.current?.postMessage(
         JSON.stringify({ type: "dispatchAction", action })
       );
     },
@@ -48,7 +48,7 @@ function Echarts(props, ref) {
      * @param {object} params
      */
     async getInstance(functionName, params) {
-      echartRef.current.postMessage(
+      eChartRef.current?.postMessage(
         JSON.stringify({ type: "getInstance", functionName, params })
       );
       return await new Promise((resolve) => {
@@ -63,7 +63,7 @@ function Echarts(props, ref) {
   }));
 
   useEffect(() => {
-    echartRef.current.postMessage(JSON.stringify(props.option));
+    eChartRef.current?.postMessage(JSON.stringify(props.option));
   }, [props.option]);
 
   /**
@@ -146,7 +146,7 @@ function Echarts(props, ref) {
             backgroundColor: props.backgroundColor || "transparent",
           }}
           {...props.webViewSettings}
-          ref={echartRef}
+          ref={eChartRef}
           injectedJavaScript={renderChart({ ...props, eventArrays })}
           scalesPageToFit={Platform.OS !== "ios"}
           originWhitelist={["*"]}

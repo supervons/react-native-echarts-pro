@@ -62,18 +62,6 @@ export default function renderChart(props) {
         */
         window.ReactNativeWebView.postMessage(JSON.stringify({type:'tooltipEvent',params}));
     }
-    let postEvent = params => {
-      let seen = [];
-      let paramsString = JSON.stringify(params, function(key, val) {
-        if (val != null && typeof val == "object") {
-          if (seen.indexOf(val) >= 0) {
-            return;
-          }
-          seen.push(val);
-        }
-        return val;
-      });
-    }
     myChart.setOption(${toString(props.option)});
     // 触发ECharts 中支持的图表行为
     let dispatchAction = (action) => {
@@ -131,6 +119,5 @@ export default function renderChart(props) {
         }
       });
     }
-    myChart.on('mapselectchanged', postEvent);
   `;
 }
