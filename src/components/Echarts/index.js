@@ -96,7 +96,7 @@ function Echarts(props, ref) {
         result.value = "notDefined";
       }
       tempInstanceResult[result.functionName] = result.value;
-      setInstanceResult((instanceResult) => tempInstanceResult);
+      setInstanceResult(() => tempInstanceResult);
       latestResult.current = tempInstanceResult;
       latestCount.current = true;
     } else if (echartsData.type === "click") {
@@ -138,7 +138,6 @@ function Echarts(props, ref) {
     <View style={{ flex: 1, height: props.height || 400 }}>
       {showContainer && (
         <WebView
-          onLoadEnd={(syntheticEvent) => {}}
           androidHardwareAccelerationDisabled={true}
           textZoom={100}
           scrollEnabled={true}
