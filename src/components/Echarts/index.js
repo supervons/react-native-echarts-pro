@@ -144,6 +144,7 @@ function Echarts(props, ref) {
           style={{
             height: props.height || 400,
             backgroundColor: props.backgroundColor || "transparent",
+            opacity: 0.99,
           }}
           {...props.webViewSettings}
           ref={eChartRef}
