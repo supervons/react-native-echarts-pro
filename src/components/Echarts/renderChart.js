@@ -23,6 +23,7 @@ export default function renderChart(props) {
     )});
     const myChart = echarts.init(eChartsContainer, '${props.themeName}');
     let formatterVariable = ${toString(props.formatterVariable || "")};
+    // Configuration dynamic events.
     for(let temp of ${JSON.stringify(props.eventArrays || "")}){
       myChart.on(temp, (params)=>{
         const clickParams = {

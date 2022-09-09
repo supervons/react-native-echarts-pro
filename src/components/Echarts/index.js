@@ -126,7 +126,7 @@ function Echarts(props, ref) {
   }, [props.extension]);
 
   /**
-   * Support custom actions.
+   * Support custom dynamic events.
    * eventActions: object
    */
   useEffect(() => {
