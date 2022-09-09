@@ -130,7 +130,8 @@ function Echarts(props, ref) {
    * eventActions: object
    */
   useEffect(() => {
-    const eventArrays = Object.keys(props.eventActions);
+    const eventArrays =
+      (props.eventActions && Object.keys(props.eventActions)) || "{}";
     setEventArrays(eventArrays);
   }, [props.eventActions]);
 

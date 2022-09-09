@@ -6,6 +6,7 @@ declare function RNEChartsPro(props: {
   webViewSettings?: any;
   backgroundColor?: string;
   formatterVariable?: object;
+  eventActions?:object;
   legendSelectChanged?(result: string);
   onDataZoom?(result: string);
   onPress?(result: string);
