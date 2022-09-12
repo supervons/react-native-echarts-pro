@@ -35,6 +35,14 @@ export default function renderChart(props) {
     }
     myChart.on('click', (params)=>{
       const clickParams = {
+        componentType:params.componentType || "",
+        seriesType:params.seriesType || "",
+        seriesIndex:params.seriesIndex || 0,
+        seriesName:params.seriesName || "",
+        dataIndex:params.dataIndex || 0,
+        data:params.data || {},
+        dataType:params.dataType || "",
+        color:params.color || "",
         name: params.name || "",
         value: params.value || 0,
         type: "click"
