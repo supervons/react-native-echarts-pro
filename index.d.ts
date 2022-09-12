@@ -2,6 +2,7 @@ declare function RNEChartsPro(props: {
   option: object;
   height?: number;
   themeName?: string;
+  extension?: object;
   customMapData?: object;
   webViewSettings?: any;
   backgroundColor?: string;
