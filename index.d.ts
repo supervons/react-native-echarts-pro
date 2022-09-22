@@ -1,6 +1,7 @@
 declare function RNEChartsPro(props: {
   option: object;
   height?: number;
+  ref?:object;
   themeName?: string;
   extension?: object;
   customMapData?: object;
