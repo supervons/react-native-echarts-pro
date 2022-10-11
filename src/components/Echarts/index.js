@@ -131,7 +131,7 @@ function Echarts(props, ref) {
    */
   useEffect(() => {
     const eventArrays =
-      (props.eventActions && Object.keys(props.eventActions)) || "{}";
+      (props.eventActions && Object.keys(props.eventActions)) || "[]";
     setEventArrays(eventArrays);
   }, [props.eventActions]);
 
