@@ -19,7 +19,7 @@ function Echarts(props, ref) {
   const [instanceFlag] = useState(false);
   const [showContainer, setShowContainer] = useState(true);
   const [instanceResult, setInstanceResult] = useState({});
-  const [eventArrays, setEventArrays] = useState({});
+  const [eventArrays, setEventArrays] = useState([]);
   const latestCount = useRef(instanceFlag);
   const latestResult = useRef(instanceResult);
   /**
