@@ -1,3 +1,7 @@
+/**
+ * This is Echarts container HTML page, the main <div> render Echarts.
+ * 这是 Echarts 容器 HTML 页面，由页面 main 节点挂载 Echarts。
+ */
 import echarts from "../Echarts/echarts.min"; // echarts.min文件引入
 import { Theme } from "../Echarts/theme/index"; // 主题文件引入
 const HtmlWeb = `<!DOCTYPE html>
