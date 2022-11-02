@@ -152,7 +152,7 @@ function Echarts(props, ref) {
           injectedJavaScript={renderChart({ ...props, eventArrays })}
           scalesPageToFit={Platform.OS !== "ios"}
           originWhitelist={["*"]}
-          source={{ html: `${HtmlWeb(props.fontUrls)} ${extensionScript}` }}
+          source={{ html: `${HtmlWeb(props.fontFamilyPath)} ${extensionScript}` }}
           onMessage={onMessage}
         />
       )}

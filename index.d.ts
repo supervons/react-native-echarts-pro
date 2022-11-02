@@ -3,7 +3,7 @@ declare function RNEChartsPro(props: {
   height?: number;
   width?: number;
   ref?:object;
-  fontUrls?: string;
+  fontFamilyPath?: string;
   themeName?: string;
   extension?: object;
   customMapData?: object;
