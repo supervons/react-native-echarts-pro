@@ -4,7 +4,8 @@
  */
 import echarts from "../Echarts/echarts.min"; // echarts.min文件引入
 import { Theme } from "../Echarts/theme/index"; // 主题文件引入
-const HtmlWeb = `<!DOCTYPE html>
+const HtmlWeb = function(fontUrls) {
+    return `<!DOCTYPE html>
   <html>
     <head>
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
@@ -21,6 +22,7 @@ const HtmlWeb = `<!DOCTYPE html>
       #main {
         height: 100%;
       }
+      ${fontUrls}
     </style>
     <script>${echarts}</script>
     <script>${Theme}</script>
@@ -29,4 +31,5 @@ const HtmlWeb = `<!DOCTYPE html>
       <div id="main" ></div>
     <body>
   <html>`;
+}
 export default HtmlWeb;
