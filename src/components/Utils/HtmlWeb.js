@@ -1,6 +1,8 @@
 /**
  * This is Echarts container HTML page, the main <div> render Echarts.
+ * And if you customized fontFamily, they will set in style tag and preview it.
  * 这是 Echarts 容器 HTML 页面，由页面 main 节点挂载 Echarts。
+ * 如果有自定义的字体，会在style标签中设置并预加载。
  */
 import echarts from "../Echarts/echarts.min"; // echarts.min文件引入
 import { Theme } from "../Echarts/theme/index"; // 主题文件引入

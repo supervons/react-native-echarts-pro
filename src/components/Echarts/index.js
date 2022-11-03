@@ -67,12 +67,16 @@ function Echarts(props, ref) {
     eChartRef.current?.postMessage(JSON.stringify(props.option));
   }, [props.option]);
 
+  /**
+   * Customized fontFamily handle.
+   * Concat fontType and fontFile strings.
+   */
   useEffect(() => {
     let fontTypeString = "";
     let fontFamilyString = "";
     for (let tempFontFamily of props?.fontFamilies || []) {
       fontTypeString += `<div style="font-family: ${tempFontFamily.fontName};height:0px">&nbsp;</div>`;
-      fontFamilyString += tempFontFamily.cssFile;
+      fontFamilyString += tempFontFamily.fontFile;
     }
     setFontFamiliesObject({
       fontTypeString,
