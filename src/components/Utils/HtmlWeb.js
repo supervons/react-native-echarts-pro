@@ -24,13 +24,13 @@ const HtmlWeb = function (fontFamiliesObject) {
       #main {
         height: 100%;
       }
-      ${fontFamiliesObject.fontFamilyString}
+      ${fontFamiliesObject.fontFamilyString || ""}
     </style>
     <script>${echarts}</script>
     <script>${Theme}</script>
     </head>
     <body>
-      ${fontFamiliesObject.fontTypeString}
+      ${fontFamiliesObject.fontTypeString || ""}
       <div id="main" ></div>
     <body>
   <html>`;
