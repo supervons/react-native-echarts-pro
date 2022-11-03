@@ -19,6 +19,7 @@ function Echarts(props, ref) {
   const [instanceFlag] = useState(false);
   const [showContainer, setShowContainer] = useState(true);
   const [instanceResult, setInstanceResult] = useState({});
+  const [fontFamiliesObject, setFontFamiliesObject] = useState({});
   const [eventArrays, setEventArrays] = useState([]);
   const latestCount = useRef(instanceFlag);
   const latestResult = useRef(instanceResult);
@@ -65,6 +66,19 @@ function Echarts(props, ref) {
   useEffect(() => {
     eChartRef.current?.postMessage(JSON.stringify(props.option));
   }, [props.option]);
+
+  useEffect(() => {
+    let fontTypeString = "";
+    let fontFamilyString = "";
+    for (let tempFontFamily of props?.fontFamilies || []) {
+      fontTypeString += `<div style="font-family: ${tempFontFamily.fontName};height:0px">&nbsp;</div>`;
+      fontFamilyString += tempFontFamily.cssFile;
+    }
+    setFontFamiliesObject({
+      fontTypeString,
+      fontFamilyString,
+    });
+  }, [props.fontFamilies]);
 
   /**
    * Remove WebView after destruction.
@@ -152,7 +166,7 @@ function Echarts(props, ref) {
           injectedJavaScript={renderChart({ ...props, eventArrays })}
           scalesPageToFit={Platform.OS !== "ios"}
           originWhitelist={["*"]}
-          source={{ html: `${HtmlWeb(props.fontFamilyPath)} ${extensionScript}` }}
+          source={{ html: `${HtmlWeb(fontFamiliesObject)} ${extensionScript}` }}
           onMessage={onMessage}
         />
       )}

@@ -4,8 +4,8 @@
  */
 import echarts from "../Echarts/echarts.min"; // echarts.min文件引入
 import { Theme } from "../Echarts/theme/index"; // 主题文件引入
-const HtmlWeb = function(fontFamilyPath) {
-    return `<!DOCTYPE html>
+const HtmlWeb = function (fontFamiliesObject) {
+  return `<!DOCTYPE html>
   <html>
     <head>
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
@@ -22,14 +22,15 @@ const HtmlWeb = function(fontFamilyPath) {
       #main {
         height: 100%;
       }
-      ${fontFamilyPath}
+      ${fontFamiliesObject.fontFamilyString}
     </style>
     <script>${echarts}</script>
     <script>${Theme}</script>
     </head>
     <body>
+      ${fontFamiliesObject.fontTypeString}
       <div id="main" ></div>
     <body>
   <html>`;
-}
+};
 export default HtmlWeb;
