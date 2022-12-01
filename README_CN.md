@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/badge/license-MIT%20License-00AAAA.svg)](https://github.com/supervons/react-native-echarts-pro/blob/master/LICENSE)
 
 [English](/README.md "english readme")  简体中文
-###  基于 Apache Echarts 并支持各种图表、地图的 React-Native 图表库.
+###  基于 Apache ECharts 并支持各种图表、地图的 React-Native 图表库.
 
 # 预览
 ## 基础

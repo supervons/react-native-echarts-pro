@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/badge/license-MIT%20License-00AAAA.svg)](https://github.com/supervons/react-native-echarts-pro/blob/master/LICENSE)
 
 English  [简体中文](/README_CN.md "中文介绍")
-### A React-Native charts based on Apache Echarts, support various charts and map.
+### A React-Native charts based on Apache ECharts, support various charts and map.
 
 # PreView
 ## Basic
