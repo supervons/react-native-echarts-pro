@@ -21,6 +21,6 @@
   "author": "supervons",
   "license": "MIT",
   "peerDependencies": {
-    "react-native-webview": "^6.9.0"
+    "react-native-webview": "^11.26.0"
   }
 }
