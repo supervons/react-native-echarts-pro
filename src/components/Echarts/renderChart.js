@@ -25,7 +25,9 @@ export default function renderChart(props) {
     const myChart = echarts.init(eChartsContainer, '${props.themeName}');
     // The function created by "new Function" cannot access outer scope variables, 
     // so declare "formatterVariable" as a global value when without "let", "const" or "var" defined.
-    ${enableParseStringFunction ? '' : 'let '}formatterVariable = ${toString(props.formatterVariable || "")};
+    ${enableParseStringFunction ? "" : "let "}formatterVariable = ${toString(
+    props.formatterVariable || ""
+  )};
     // Configuration dynamic events.
     for(let temp of ${JSON.stringify(props.eventArrays || "")}){
       myChart.on(temp, (params)=>{
