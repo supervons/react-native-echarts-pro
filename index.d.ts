@@ -11,6 +11,7 @@ declare function RNEChartsPro(props: {
   backgroundColor?: string;
   formatterVariable?: object;
   eventActions?:object;
+  enableParseStringFunction?:boolean;
   legendSelectChanged?(result: string);
   onDataZoom?(result: string);
   onPress?(result: string);

@@ -13,6 +13,7 @@ const displayScale =
 export default function renderChart(props) {
   const height = `${(props.height || 400) * displayScale}px`;
   const width = props.width ? `${props.width * displayScale}px` : "auto";
+  const enableParseStringFunction = !!props.enableParseStringFunction;
   return `
     const eChartsContainer = document.getElementById('main')
     eChartsContainer.style.height = "${height}";
@@ -22,7 +23,9 @@ export default function renderChart(props) {
       props.customMapData || getMapJSON(props?.option?.geo?.length)
     )});
     const myChart = echarts.init(eChartsContainer, '${props.themeName}');
-    let formatterVariable = ${toString(props.formatterVariable || "")};
+    // The function created by "new Function" cannot access outer scope variables, 
+    // so declare "formatterVariable" as a global value when without "let", "const" or "var" defined.
+    ${enableParseStringFunction ? '' : 'let '}formatterVariable = ${toString(props.formatterVariable || "")};
     // Configuration dynamic events.
     for(let temp of ${JSON.stringify(props.eventArrays || "")}){
       myChart.on(temp, (params)=>{
@@ -71,7 +74,36 @@ export default function renderChart(props) {
         */
         window.ReactNativeWebView.postMessage(JSON.stringify({type:'tooltipEvent',params}));
     }
-    myChart.setOption(${toString(props.option)});
+    /*
+    * Traversing and parsing the value of json object, if the value is a string, and starts with "function",
+    * then the value will be converted to function via "new Function" method.
+    * In the WebView environment to create function, the function won't be converted to bytecode for Hermes engine.
+    */
+    function parseStringFunction(obj) {
+      for (const key in obj) {
+        const value = obj[key];
+        // null is also object, so need to check value is not null.
+        if (!!value && typeof value === 'object') {
+          parseStringFunction(value);
+        } else if (!!value && typeof value === 'string' && value.startsWith('function')) {
+          let startBody = value.indexOf('{') + 1;
+          let endBody = value.lastIndexOf('}');
+          let startArgs = value.indexOf('(') + 1;
+          let endArgs = value.indexOf(')');
+          const args = value.substring(startArgs, endArgs);
+          // Simplify code by removing line breaks between codes
+          const body = value.substring(startBody, endBody).replace(/\\n/g, '');
+          obj[key] = new Function(args, body);
+        }
+      }
+    }
+    if (${enableParseStringFunction}) {
+      const option = ${toString(props.option)};
+      parseStringFunction(option);
+      myChart.setOption(option);
+    } else {
+      myChart.setOption(${toString(props.option)});
+    }
     // 触发ECharts 中支持的图表行为
     let dispatchAction = (action) => {
       if(Array.isArray(action)){
@@ -87,7 +119,13 @@ export default function renderChart(props) {
       window.addEventListener("message", (event) => {
         if (!event.isTrusted) {
           // 非图表类点击则执行刷新数据操作
-          let option = JSON.parse(event.data);
+          let option;
+          if (${enableParseStringFunction}) {
+            option = JSON.parse(event.data);
+            parseStringFunction(option);
+          } else {
+            option = JSON.parse(event.data);
+          }
           myChart.setOption(option, option.optionSetting);
           // 触发ECharts 中支持的图表行为
           if (option.type === "dispatchAction") {
@@ -109,7 +147,13 @@ export default function renderChart(props) {
     } else {
       // Android Listener
       window.document.addEventListener('message', (event) =>{
-        let option = JSON.parse(event.data);
+        let option;
+        if (${enableParseStringFunction}) {
+          option = JSON.parse(event.data);
+          parseStringFunction(option);
+        } else {
+          option = JSON.parse(event.data);
+        }
         myChart.setOption(option, option.optionSetting);
         // 触发ECharts 中支持的图表行为
         if(option.type === 'dispatchAction'){
