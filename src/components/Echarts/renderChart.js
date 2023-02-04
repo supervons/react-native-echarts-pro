@@ -116,6 +116,33 @@ export default function renderChart(props) {
         myChart.dispatchAction(action)
       }
     }
+    let parse = (params, date2obj) => {
+      let iso8061 = date2obj ? /^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}(?:\\.\\d*)?)Z$/ : false;
+      let option = JSON.parse(params, function (key, value) {
+        var prefix;
+        if (typeof value != 'string') {
+          return value;
+        }
+        if (value.length < 8) {
+          return value;
+        }
+        prefix = value.substring(0, 8);
+        if (iso8061 && value.match(iso8061)) {
+          return new Date(value);
+        }
+        if (prefix === 'function') {
+          return eval('(' + value + ')');
+        }
+        if (prefix === '_PxEgEr_') {
+          return eval(value.slice(8));
+        }
+        if (prefix === '_NuFrRa_') {
+          return eval(value.slice(8));
+        }
+        return value;
+      });
+      return option;
+    }
     //判断是否是iOS
     if(${isiOS}){
       window.addEventListener("message", (event) => {
@@ -123,10 +150,10 @@ export default function renderChart(props) {
           // 非图表类点击则执行刷新数据操作
           let option;
           if (${enableParseStringFunction}) {
-            option = JSON.parse(event.data);
+            option = parse(event.data, true);
             parseStringFunction(option);
           } else {
-            option = JSON.parse(event.data);
+            option = parse(event.data, true);
           }
           myChart.setOption(option, option.optionSetting);
           // 触发ECharts 中支持的图表行为
@@ -151,10 +178,10 @@ export default function renderChart(props) {
       window.document.addEventListener('message', (event) =>{
         let option;
         if (${enableParseStringFunction}) {
-          option = JSON.parse(event.data);
+          option = parse(event.data, true);
           parseStringFunction(option);
         } else {
-          option = JSON.parse(event.data);
+          option = parse(event.data, true);
         }
         myChart.setOption(option, option.optionSetting);
         // 触发ECharts 中支持的图表行为

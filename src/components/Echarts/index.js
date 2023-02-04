@@ -12,6 +12,7 @@ import { Platform, View } from "react-native";
 import WebView from "react-native-webview";
 import renderChart from "./renderChart";
 import HtmlWeb from "../Utils/HtmlWeb";
+import { stringIfy } from "../../util/toString";
 
 function Echarts(props, ref) {
   const eChartRef = useRef();
@@ -31,7 +32,7 @@ function Echarts(props, ref) {
     setNewOption(option, optionSetting) {
       // See more info: https://echarts.apache.org/en/api.html#echartsInstance.setOption
       option.optionSetting = optionSetting;
-      eChartRef.current?.postMessage(JSON.stringify(option));
+      eChartRef.current?.postMessage(stringIfy(option));
     },
     /**
      * 触发ECharts 中支持的图表行为
@@ -64,7 +65,7 @@ function Echarts(props, ref) {
   }));
 
   useEffect(() => {
-    eChartRef.current?.postMessage(JSON.stringify(props.option));
+    eChartRef.current?.postMessage(stringIfy(props.option));
   }, [props.option]);
 
   /**
