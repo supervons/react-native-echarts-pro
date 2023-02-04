@@ -118,7 +118,7 @@ export default function renderChart(props) {
     }
     let parse = (params, date2obj) => {
       let iso8061 = date2obj ? /^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}(?:\\.\\d*)?)Z$/ : false;
-      let option = JSON.parse(params, function (key, value) {
+      return JSON.parse(params, function (key, value) {
         var prefix;
         if (typeof value != 'string') {
           return value;
@@ -133,27 +133,20 @@ export default function renderChart(props) {
         if (prefix === 'function') {
           return eval('(' + value + ')');
         }
-        if (prefix === '_PxEgEr_') {
-          return eval(value.slice(8));
-        }
-        if (prefix === '_NuFrRa_') {
+        if (prefix === '_PxEgEr_' || prefix === '_NuFrRa_') {
           return eval(value.slice(8));
         }
         return value;
       });
-      return option;
     }
     //判断是否是iOS
     if(${isiOS}){
       window.addEventListener("message", (event) => {
         if (!event.isTrusted) {
           // 非图表类点击则执行刷新数据操作
-          let option;
+          let option = parse(event.data, true);
           if (${enableParseStringFunction}) {
-            option = parse(event.data, true);
             parseStringFunction(option);
-          } else {
-            option = parse(event.data, true);
           }
           myChart.setOption(option, option.optionSetting);
           // 触发ECharts 中支持的图表行为
@@ -167,7 +160,7 @@ export default function renderChart(props) {
               JSON.stringify({
                 type: "getInstance",
                 functionName: option.functionName,
-                value: result,
+                value: result
               })
             );
           }
@@ -176,12 +169,9 @@ export default function renderChart(props) {
     } else {
       // Android Listener
       window.document.addEventListener('message', (event) =>{
-        let option;
+        let option = parse(event.data, true);
         if (${enableParseStringFunction}) {
-          option = parse(event.data, true);
           parseStringFunction(option);
-        } else {
-          option = parse(event.data, true);
         }
         myChart.setOption(option, option.optionSetting);
         // 触发ECharts 中支持的图表行为
