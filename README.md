@@ -32,3 +32,5 @@ It is super easy to `use Apache ECharts in react-native`. Have a look at our [Ge
 [@congshengwu](https://github.com/congshengwu)
 
 [@RengeRenge](https://github.com/RengeRenge)
+
+[@ivantrejo41](https://github.com/ivantrejo41)
