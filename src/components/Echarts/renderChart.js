@@ -85,13 +85,18 @@ export default function renderChart(props) {
       for (const key in obj) {
         const value = obj[key];
         // null is also object, so need to check value is not null.
-        if (!!value && typeof value === 'object') {
+        const isValidObject = !!value && typeof value === 'object';
+        const isStringFunction = !!value && typeof value === 'string'
+          && value.startsWith('function');
+        const isStringArrowFunction = !!value && typeof value === 'string'
+          && /^\(.*?\).*?=>/.test(value);
+        if (isValidObject) {
           parseStringFunction(value);
-        } else if (!!value && typeof value === 'string' && value.startsWith('function')) {
-          let startBody = value.indexOf('{') + 1;
-          let endBody = value.lastIndexOf('}');
+        } else if (isStringFunction || isStringArrowFunction) {
           let startArgs = value.indexOf('(') + 1;
           let endArgs = value.indexOf(')');
+          let startBody = value.indexOf('{') + 1;
+          let endBody = value.lastIndexOf('}');
           const args = value.substring(startArgs, endArgs);
           // Simplify code by removing line breaks between codes
           const body = value.substring(startBody, endBody).replace(/\\n/g, '');
