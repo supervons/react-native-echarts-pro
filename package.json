@@ -19,8 +19,5 @@
     "echarts-pro"
   ],
   "author": "supervons",
-  "license": "MIT",
-  "peerDependencies": {
-    "react-native-webview": "^11.26.0"
-  }
+  "license": "MIT"
 }
