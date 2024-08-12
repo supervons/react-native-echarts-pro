@@ -5,6 +5,7 @@ declare function RNEChartsPro(props: {
   ref?:object;
   fontFamilies?: Array<object>;
   themeName?: string;
+  renderMode?: string;
   extension?: object;
   customMapData?: object;
   webViewSettings?: any;

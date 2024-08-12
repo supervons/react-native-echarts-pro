@@ -22,7 +22,9 @@ export default function renderChart(props) {
     echarts.registerMap('world', ${JSON.stringify(
       props.customMapData || getMapJSON(props?.option?.geo?.length)
     )});
-    const myChart = echarts.init(eChartsContainer, '${props.themeName}');
+    const myChart = echarts.init(eChartsContainer, '${
+      props.themeName
+    }',{ renderer: '${props.renderMode ? props.renderMode : "canvas"}' });
     // The function created by "new Function" cannot access outer scope variables, 
     // so declare "formatterVariable" as a global value when without "let", "const" or "var" defined.
     ${enableParseStringFunction ? "" : "let "}formatterVariable = ${toString(
