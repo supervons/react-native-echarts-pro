@@ -162,7 +162,15 @@ export default function renderChart(props) {
           }
           // 获取实例进行操作
           if (option.type === "getInstance") {
-            const result = myChart[option.functionName](option.params);
+            let result = null;
+            // 动态获取图表组件高度, componentType 为 legend/xAxis/yAxis 等
+            if (option.functionName === "getComponentInfo") {
+              const componentModel = myChart.getModel().getComponent(option.params.componentType);
+              const componentView = myChart.getViewOfComponentModel(componentModel);
+              result = componentView.group.getBoundingRect();
+            } else{
+              result = myChart[option.functionName](option.params);
+            }
             window.ReactNativeWebView.postMessage(
               JSON.stringify({
                 type: "getInstance",
@@ -187,7 +195,15 @@ export default function renderChart(props) {
         }
         // 获取实例进行操作
         if(option.type === 'getInstance'){
-          const result = myChart[option.functionName](option.params)
+          let result = null;
+          // 动态获取图表组件高度, componentType 为 legend/xAxis/yAxis 等
+          if (option.functionName === "getComponentInfo") {
+            const componentModel = myChart.getModel().getComponent(option.params.componentType);
+            const componentView = myChart.getViewOfComponentModel(componentModel);
+            result = componentView.group.getBoundingRect();
+          } else{
+            result = myChart[option.functionName](option.params);
+          }
           window.ReactNativeWebView.postMessage(
             JSON.stringify({
               type:'getInstance',
