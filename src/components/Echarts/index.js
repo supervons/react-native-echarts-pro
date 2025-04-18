@@ -8,11 +8,13 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Platform, View } from "react-native";
+import { Platform, TouchableOpacity, View } from "react-native";
 import WebView from "react-native-webview";
 import renderChart from "./renderChart";
 import HtmlWeb from "../Utils/HtmlWeb";
 import { stringIfy } from "../../util/toString";
+import { SvgXml } from "react-native-svg";
+import * as echarts from "echarts";
 
 function Echarts(props, ref) {
   const eChartRef = useRef();
@@ -22,6 +24,8 @@ function Echarts(props, ref) {
   const [instanceResult, setInstanceResult] = useState({});
   const [fontFamiliesObject, setFontFamiliesObject] = useState({});
   const [eventArrays, setEventArrays] = useState([]);
+  const [svgStr, setSvgStr] = useState(null);
+  const [onClick, setOnClick] = useState(false);
   const latestCount = useRef(instanceFlag);
   const latestResult = useRef(instanceResult);
   /**
@@ -66,6 +70,20 @@ function Echarts(props, ref) {
 
   useEffect(() => {
     eChartRef.current?.postMessage(stringIfy(props.option));
+    if (
+      props.renderMode === "svg-click-to-webview" ||
+      props.renderMode === "svg-auto-to-webview"
+    ) {
+      let chart = echarts.init(null, null, {
+        renderer: "svg",
+        ssr: true,
+        width: props.width || 400,
+        height: props.height || 400,
+      });
+      chart.setOption(props.option);
+      const svgStr = chart.renderToSVGString();
+      setSvgStr(svgStr);
+    }
   }, [props.option]);
 
   /**
@@ -156,23 +174,52 @@ function Echarts(props, ref) {
 
   return (
     <View style={{ flex: 1, height: props.height || 400 }}>
-      {showContainer && (
-        <WebView
-          androidHardwareAccelerationDisabled={true}
-          textZoom={100}
-          scrollEnabled={true}
-          style={{
-            height: props.height || 400,
-            backgroundColor: props.backgroundColor || "transparent",
-            opacity: 0.99,
+      {props.renderMode === "svg-click-to-webview" && !onClick ? (
+        <TouchableOpacity
+          onPress={() => {
+            setOnClick(!onClick);
           }}
-          {...props.webViewSettings}
-          ref={eChartRef}
-          injectedJavaScript={renderChart({ ...props, eventArrays })}
-          scalesPageToFit={Platform.OS !== "ios"}
-          originWhitelist={["*"]}
-          source={{ html: `${HtmlWeb(fontFamiliesObject)} ${extensionScript}` }}
-          onMessage={onMessage}
+        >
+          <SvgXml
+            width={props.weight || 400}
+            height={props.height || 400}
+            xml={svgStr}
+          />
+        </TouchableOpacity>
+      ) : (
+        showContainer && (
+          <WebView
+            androidHardwareAccelerationDisabled={true}
+            textZoom={100}
+            scrollEnabled={true}
+            style={{
+              height: props.height || 400,
+              backgroundColor: props.backgroundColor || "transparent",
+              opacity: 0.99,
+            }}
+            onLoadEnd={() => {
+              if (props.renderMode === "svg-auto-to-webview") {
+                setOnClick(!onClick);
+              }
+            }}
+            {...props.webViewSettings}
+            ref={eChartRef}
+            startInLoadingState={true}
+            injectedJavaScript={renderChart({ ...props, eventArrays })}
+            scalesPageToFit={Platform.OS !== "ios"}
+            originWhitelist={["*"]}
+            source={{
+              html: `${HtmlWeb(fontFamiliesObject)} ${extensionScript}`,
+            }}
+            onMessage={onMessage}
+          />
+        )
+      )}
+      {props.renderMode === "svg-auto-to-webview" && !onClick && (
+        <SvgXml
+          width={props.weight || 400}
+          height={props.height || 400}
+          xml={svgStr}
         />
       )}
     </View>
