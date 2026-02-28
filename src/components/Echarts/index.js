@@ -82,6 +82,7 @@ function Echarts(props, ref) {
       });
       chart.setOption(props.option);
       const svgStr = chart.renderToSVGString();
+      svgStr = svgStr.replace(/font-size:\s*\d+px/g, "font-size:42px");
       setSvgStr(svgStr);
     }
   }, [props.option]);
